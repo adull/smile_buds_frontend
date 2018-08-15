@@ -1,0 +1,143 @@
+import React, {Component} from 'react';
+import Modal from '../../modal/Modal.js';
+import LoginOrSignup from '../../account/LoginOrSignup.js'
+
+class GrinButton extends Component {
+  constructor() {
+    super();
+    this.state = {
+      grinningAt: false,
+      modalIsOpen: false
+    };
+    // console.log(this);
+    this.grinAt = this.grinAt.bind(this);
+    this.ungrinAt = this.ungrinAt.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    });
+  }
+
+  // componentDidMount() {
+  componentWillReceiveProps() {
+    let thisObj = this;
+    let hash = this.props.hash;
+    fetch('/did-i-grin-at/' + hash, {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error: ', error))
+    .then(response => {
+      // if(response.grinned)
+      if(response) {
+        if(response.grinned === true) {
+          this.setState({
+            grinningAt: true
+          })
+        }
+        else {
+          this.setState({
+            grinningAt: false
+          })
+        }
+        return;
+      }
+
+    })
+      // console.log(hash + " - " + response.grinned);
+  }
+
+  grinAt() {
+    console.log("inside grin at function")
+    let thisObj = this;
+    let hash = this.props.hash;
+    fetch('/grin-at/' + hash, {
+      credentials: 'include',
+      method: 'POST'
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error: ', error))
+    .then(response => {
+      if(response) {
+        console.log("okay there is a response")
+        if(response.success) {
+          console.log("okay there is a successful response");
+          thisObj.setState({
+            grinningAt: true
+          })
+          thisObj.props.onGrin();
+        }
+        else {
+          console.log("grin - no response success");
+          thisObj.setState({
+            grinningAt: false
+          })
+          if(response.fail === "no-user") {
+            console.log("dis")
+            thisObj.setState({
+              modalIsOpen: true
+            })
+          }
+        }
+      }
+    })
+  }
+
+  ungrinAt() {
+    let thisObj = this;
+
+    let hash = this.props.hash;
+    fetch('/ungrin-at/' + hash, {
+      credentials: 'include',
+      method: 'POST'
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error: ', error))
+    .then(response => {
+      if(response) {
+        if(response.success) {
+          thisObj.setState({
+            grinningAt: false
+          })
+          thisObj.props.onGrin();
+        }
+        else {
+          console.log("ungrin - no response success");
+          thisObj.setState({
+            grinningAt: true
+          })
+        }
+      }
+    })
+  }
+
+  render() {
+    if(this.state.grinningAt) {
+      return (
+        <div className="grin-section">
+          <img onClick={this.grinAt} src={ require('./grin-icon.png') } alt="smile" />
+          <button onClick={this.grinAt} className="grin-btn">Stop Grinning At This!</button>
+          <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
+            <LoginOrSignup />
+          </Modal>
+        </div>
+      )
+    }
+    else {
+      return(
+        <div className="grin-section" >
+          <img onClick={this.grinAt} src={ require('./grin-icon.png') } alt="smile" />
+          <button onClick={this.grinAt} className="grin-btn">Grin At!</button>
+          <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
+            <LoginOrSignup />
+          </Modal>
+        </div>
+      );
+    }
+  }
+}
+
+export default GrinButton
