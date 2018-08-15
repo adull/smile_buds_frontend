@@ -47,7 +47,7 @@ class SignupForm extends Component {
       data.append("email", this.state.email);
       data.append("password", this.state.password);
       data.append("image", this.fileInput.current.files[0]);
-
+      console.log(data);
       fetch('/signup', {
         credentials: 'include',
         method: 'POST',
