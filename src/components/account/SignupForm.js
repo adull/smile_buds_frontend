@@ -34,6 +34,11 @@ class SignupForm extends Component {
       return;
     }
     else {
+      console.log("file input: ")
+      console.log(this.fileInput);
+      console.log(this.fileInput.current);
+      console.log(this.fileInput.current.files)
+      console.log(this.fileInput.current.files[0]);
       var thisState = this.state;
       let data = new FormData();
       data.append("first_name", this.state.first_name);

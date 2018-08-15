@@ -41,6 +41,7 @@ class Feed extends Component {
       credentials: 'include',
     })
     .then(function(response) {
+      console.log(response);
       if(response.ok ) {
         return response.json();
       }
@@ -50,7 +51,7 @@ class Feed extends Component {
         thisObj.setState({
           postsReceived: thisObj.state.postsReceived + json.length,
           postsArr: thisObj.state.postsArr.concat(json)
-        })  
+        })
       }
     })
   }
