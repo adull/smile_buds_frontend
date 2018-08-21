@@ -31,6 +31,7 @@ class GrinButton extends Component {
     .then(res => res.json())
     .catch(error => console.error('Error: ', error))
     .then(response => {
+      console.log(response);
       // if(response.grinned)
       if(response) {
         if(response.grinned === true) {
@@ -51,7 +52,7 @@ class GrinButton extends Component {
   }
 
   grinAt() {
-    console.log("inside grin at function")
+    console.log("grin at")
     let thisObj = this;
     let hash = this.props.hash;
     fetch('/grin-at/' + hash, {
@@ -87,6 +88,7 @@ class GrinButton extends Component {
   }
 
   ungrinAt() {
+    console.log("ungrin at")
     let thisObj = this;
 
     let hash = this.props.hash;
@@ -118,8 +120,8 @@ class GrinButton extends Component {
     if(this.state.grinningAt) {
       return (
         <div className="grin-section">
-          <img onClick={this.grinAt} src={ require('./grin-icon.png') } alt="smile" />
-          <button onClick={this.grinAt} className="grin-btn">Stop Grinning At This!</button>
+          <img onClick={this.ungrinAt} src={ require('./grin-icon.png') } alt="smile" />
+          <button onClick={this.ungrinAt} className="grin-btn">Stop Grinning At This!</button>
           <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
             <LoginOrSignup />
           </Modal>
