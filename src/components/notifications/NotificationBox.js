@@ -15,6 +15,7 @@ class NotificationBox extends Component {
       notifications: props.notifications
     })
   }
+
   render() {
     if(!this.props.show) {
       return null;
@@ -26,12 +27,12 @@ class NotificationBox extends Component {
       let notification = notifications[i];
       if(notification.notification_type === "post") {
         elements.push(
-          <PostNotification key={notification.id} metadata={notification} />
+          <PostNotification key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
         )
       }
       else if(notification.notification_type === "message") {
         elements.push(
-          <MessageNotification key={notification.id} metadata={notification} />
+          <MessageNotification key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
         )
       }
     }

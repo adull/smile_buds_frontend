@@ -10,6 +10,22 @@ class MessageNotification extends Notification {
       type: props.metadata.notification_type
     }
   }
+
+  removeNotification() {
+    let thisObj = this;
+    console.log("clicked on a message notification");
+    fetch('/remove-message-notification/' + this.state.fromID, {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .catch(error => console.error("error: ", error))
+    .then(response => {
+      if(response.ok) {
+        thisObj.props.getNotifications;
+      }
+    })
+  }
+
   render() {
     return(
       <div className={"notification " + this.state.type + "-notification"}>

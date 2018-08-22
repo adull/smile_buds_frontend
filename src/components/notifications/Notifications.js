@@ -11,10 +11,31 @@ class Notifications extends Component {
       notificationsNum: 0
     }
     this.toggleNotificationBox = this.toggleNotificationBox.bind(this);
+    this.getNotifications = this.getNotifications.bind(this);
   }
-  componentWillMount() {
 
+  getNotifications() {
+    fetch('/get-notifications', {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .catch(error => console.error("error: ", error))
+    .then(response => {
+      if(response) {
+        this.setState({
+          notificationsArr: response,
+          notificationsNum: response.length
+        })
+      }
+      else {
+        this.setState({
+          notificationsArr: [],
+          notificationsNum: 0
+        })
+      }
+    })
   }
+
   componentWillReceiveProps() {
     fetch('/get-notifications', {
       credentials: 'include'
@@ -23,7 +44,6 @@ class Notifications extends Component {
     .catch(error => console.error("error: ", error))
     .then(response => {
       if(response) {
-        console.log("got a response from get notifications");
         this.setState({
           notificationsArr: response,
           notificationsNum: response.length
@@ -39,29 +59,9 @@ class Notifications extends Component {
   }
 
   toggleNotificationBox() {
-    if(this.state.notificationBoxIsOpen === true) {
-      this.setState({
-        notificationBoxIsOpen: false
-      })
-      fetch('/remove-notifications', {
-        credentials: 'include'
-      })
-      .then(res => res.json())
-      .catch(error => console.error("error: ", error))
-      .then(response => {
-        if(response) {
-          this.setState({
-            notificationsArr: response,
-            notificationsNum: response.length
-          })
-        }
-      })
-    }
-    else if(this.state.notificationBoxIsOpen === false) {
-      this.setState({
-        notificationBoxIsOpen: true
-      });
-    }
+    this.setState({
+      notificationBoxIsOpen: !(this.state.notificationBoxIsOpen)
+    })
   }
 
   render() {
@@ -72,6 +72,7 @@ class Notifications extends Component {
           <img className="notifications-smile" src={ require('./smile.png') } alt="Smile" />
         </div>
         <NotificationBox notifications={this.state.notificationsArr}
+                        getNotifications={this.getNotifications}
                         show={this.state.notificationBoxIsOpen}
                         onClose={this.toggleNotificationBox}/>
       </div>

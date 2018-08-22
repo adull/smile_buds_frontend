@@ -63,7 +63,6 @@ class HomePage extends Component {
 
 
   render() {
-    console.log("render homepage again")
     return (
       <div>
         <Header />
