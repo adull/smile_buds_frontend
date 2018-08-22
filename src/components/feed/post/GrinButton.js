@@ -31,8 +31,6 @@ class GrinButton extends Component {
     .then(res => res.json())
     .catch(error => console.error('Error: ', error))
     .then(response => {
-      console.log(response);
-      // if(response.grinned)
       if(response) {
         if(response.grinned === true) {
           this.setState({

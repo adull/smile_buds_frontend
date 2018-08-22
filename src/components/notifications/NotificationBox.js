@@ -32,7 +32,7 @@ class NotificationBox extends Component {
       }
       else if(notification.notification_type === "message") {
         elements.push(
-          <MessageNotification key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
+          <MessageNotification setMessaging={this.props.setMessaging} toggleMessaging={this.props.toggleMessaging} key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
         )
       }
     }

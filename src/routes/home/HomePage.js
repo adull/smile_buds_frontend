@@ -22,7 +22,6 @@ class HomePage extends Component {
     })
     .then(function(response) {
       if(response.ok) {
-        console.log(response);
         return response.json();
       }
     })
@@ -43,7 +42,6 @@ class HomePage extends Component {
   }
 
   addBalloon() {
-    console.log("add a balloon")
     this.setState({
       balloonAmt: this.state.balloonAmt + 1
     })
@@ -61,11 +59,16 @@ class HomePage extends Component {
     })
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({
+      loggedIn: props.loggedIn
+    });
+  }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header loggedIn={this.state.loggedIn}/>
         <Body userIdentifier={this.state.userIdentifier} addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} login={this.login} logout={this.logout}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>

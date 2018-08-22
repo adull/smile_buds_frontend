@@ -48,7 +48,7 @@ class PostPage extends Component {
     console.log(userIdentifier);
     return(
       <div>
-        <Header />
+        <Header loggedIn={this.state.loggedIn}/>
         <PostPageBody addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} postHash={userIdentifier}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>

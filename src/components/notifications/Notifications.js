@@ -1,17 +1,29 @@
 import React, {Component} from 'react';
 import NotificationsNumber from './NotificationsNumber.js';
 import NotificationBox from './NotificationBox.js';
+import Modal from '../modal/Modal.js';
+import Messaging from '../messaging/Messaging.js';
 
 class Notifications extends Component {
   constructor() {
     super();
     this.state = {
       notificationBoxIsOpen: false,
+      messengerModalIsOpen: false,
       notificationsArr: [],
-      notificationsNum: 0
+      notificationsNum: 0,
+      messaging: -1
     }
+    this.toggleModal = this.toggleModal.bind(this);
     this.toggleNotificationBox = this.toggleNotificationBox.bind(this);
     this.getNotifications = this.getNotifications.bind(this);
+    this.setMessaging = this.setMessaging.bind(this);
+  }
+
+  toggleModal = () => {
+    this.setState({
+      messengerModalIsOpen: !(this.state.messengerModalIsOpen)
+    });
   }
 
   getNotifications() {
@@ -36,23 +48,26 @@ class Notifications extends Component {
     })
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(props) {
     fetch('/get-notifications', {
       credentials: 'include'
     })
     .then(res => res.json())
     .catch(error => console.error("error: ", error))
     .then(response => {
+      console.log(props)
       if(response) {
         this.setState({
           notificationsArr: response,
-          notificationsNum: response.length
+          notificationsNum: response.length,
+          loggedIn: props.loggedIn
         })
       }
       else {
         this.setState({
           notificationsArr: [],
-          notificationsNum: 0
+          notificationsNum: 0,
+          loggedIn: props.loggedIn
         })
       }
     })
@@ -64,6 +79,12 @@ class Notifications extends Component {
     })
   }
 
+  setMessaging(id) {
+    this.setState({
+      messaging: id
+    });
+  }
+
   render() {
     return(
       <div className="notification-wrapper">
@@ -73,8 +94,15 @@ class Notifications extends Component {
         </div>
         <NotificationBox notifications={this.state.notificationsArr}
                         getNotifications={this.getNotifications}
+                        setMessaging={this.setMessaging}
+                        toggleMessaging={this.toggleModal}
                         show={this.state.notificationBoxIsOpen}
-                        onClose={this.toggleNotificationBox}/>
+                        onClose={this.toggleNotificationBox} />
+        <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
+               onClose={this.toggleModal}
+               >
+            <Messaging loggedIn={this.props.loggedIn} messaging={this.state.messaging}/>
+        </Modal>
       </div>
     )
   }

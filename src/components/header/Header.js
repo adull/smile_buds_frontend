@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import Notifications from '../notifications/Notifications.js';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: props.loggedIn
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      loggedIn: props.loggedIn
+    })
+  }
+
   render() {
-    console.log("render header")
     return(
       <header>
         <div className="smile-buddies">
@@ -17,7 +29,7 @@ class Header extends Component {
             <img className="subtitle-img" src={ require('./we_laugh.png') } alt="We Laugh So Much Here!" />
           </div>
         </div>
-        <Notifications />
+        <Notifications loggedIn={this.state.loggedIn}/>
       </header>
     );
   }

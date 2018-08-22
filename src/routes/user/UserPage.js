@@ -48,7 +48,7 @@ class UserPage extends Component {
     var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
     return (
       <div>
-        <Header />
+        <Header loggedIn={this.state.loggedIn}/>
         <UserProfile addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} user={userIdentifier}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>
