@@ -44,6 +44,7 @@ class UserPage extends Component {
   }
 
   render() {
+    console.log(this.state.loggedIn);
     var pathName = this.props.location.pathname;
     var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
     return (

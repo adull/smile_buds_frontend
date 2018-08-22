@@ -101,7 +101,7 @@ class Notifications extends Component {
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
                onClose={this.toggleModal}
                >
-            <Messaging loggedIn={this.props.loggedIn} messaging={this.state.messaging}/>
+            <Messaging mobileView="messages" loggedIn={this.props.loggedIn} messaging={this.state.messaging}/>
         </Modal>
       </div>
     )

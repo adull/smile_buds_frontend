@@ -46,7 +46,7 @@ class Sidebar extends Component {
               Messages
             </div>
             <Modal className="messaging-modal" show={this.state.isOpen} onClose={this.toggleModal}>
-              <Messaging loggedIn={this.state.loggedIn}/>
+              <Messaging mobileView="buddies" loggedIn={this.state.loggedIn}/>
             </Modal>
           </div>
           <Link to="/" className="sidebar-option">

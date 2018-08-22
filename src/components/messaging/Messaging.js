@@ -9,7 +9,8 @@ class Messaging extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileView: 'buddies',
+      // mobileView: 'buddies',
+      mobileView: props.mobileView,
       modalIsOpen: false,
       loggedIn: props.loggedIn,
       messaging: props.messaging,

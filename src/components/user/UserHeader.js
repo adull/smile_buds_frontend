@@ -76,7 +76,7 @@ class UserHeader extends Component {
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
                onClose={this.toggleModal}
                >
-            <Messaging loggedIn={this.props.loggedIn} messaging={this.state.id}/>
+            <Messaging mobileView="messages" loggedIn={this.props.loggedIn} messaging={this.state.id}/>
         </Modal>
       </div>
     )
