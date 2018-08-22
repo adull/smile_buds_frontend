@@ -224,11 +224,24 @@ html, body {
         z-index: 99;
         background-color: white;
         .notification {
-          &:first-of-type {
+          color: $blue;
+          text-decoration: none;
+          font-size: 16px;
+          font-family: 'Arial Rounded';
+
+          border-top: 2px solid black;
+          div {
+            padding: 10px 0px;
+            border-top: 2px solid black;
+          }
+
+          &:first-child {
+            div {
+              // margin: 10px 0px;
+              border: none;
+            }
             border: none;
           }
-          padding: 10px 0px;
-          border-top: 2px solid black;
         }
       }
     }
