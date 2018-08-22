@@ -19,6 +19,7 @@ class MessageNotification extends Notification {
     // this.removeNotification();
     this.props.setMessaging(this.state.fromID);
     this.props.toggleMessaging();
+    this.removeNotification();
   }
 
   removeNotification() {
