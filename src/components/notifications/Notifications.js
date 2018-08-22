@@ -13,6 +13,9 @@ class Notifications extends Component {
     this.toggleNotificationBox = this.toggleNotificationBox.bind(this);
   }
   componentWillMount() {
+
+  }
+  componentWillReceiveProps() {
     fetch('/get-notifications', {
       credentials: 'include'
     })
@@ -20,11 +23,17 @@ class Notifications extends Component {
     .catch(error => console.error("error: ", error))
     .then(response => {
       if(response) {
+        console.log("got a response from get notifications");
         this.setState({
           notificationsArr: response,
           notificationsNum: response.length
         })
-        // console.log(response);
+      }
+      else {
+        this.setState({
+          notificationsArr: [],
+          notificationsNum: 0
+        })
       }
     })
   }

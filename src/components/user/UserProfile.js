@@ -11,7 +11,7 @@ class UserProfile extends Component {
         <UserHeader loggedIn={this.props.loggedIn} user={this.props.user} />
         <div className="feed-section">
           <Sidebar addBalloon={this.props.addBalloon}/>
-          <div className="feed">
+          <div className="feed-wrapper">
             <Feed value={this.props.user} />
           </div>
         </div>

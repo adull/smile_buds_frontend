@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 
 class Post extends Component {
   constructor() {
@@ -63,7 +68,7 @@ class Post extends Component {
     })
     .then(function(json) {
       thisObj.setState({
-        love_amount: json.love_amount,
+        love_amount: pad(json.love_amount, 4),
         poster_name: json.first_name,
         poster_identifier: json.identifier
       })

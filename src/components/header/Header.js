@@ -3,6 +3,7 @@ import Notifications from '../notifications/Notifications.js';
 
 class Header extends Component {
   render() {
+    console.log("render header")
     return(
       <header>
         <div className="smile-buddies">

@@ -11,6 +11,12 @@ function toTitleCase(str) {
   );
 }
 
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
 class UserHeader extends Component {
   constructor(props) {
     super(props);
@@ -39,10 +45,11 @@ class UserHeader extends Component {
       return response.json();
     })
     .then(function(json) {
+      console.log(json)
       thisObj.setState({
         name: json.first_name,
         id: json.id,
-        love_amount: 0,
+        love_amount: pad(json.love_amount, 4),
         hobby: json.hobby,
         hash: thisObj.props.user
       })
@@ -65,7 +72,7 @@ class UserHeader extends Component {
         <div className="user-header-item user-header-love">
           <span className="user-header-item-identifier">Loves you</span> <span className="user-header-item-value">{this.state.love_amount}</span> <span className="user-header-item-identifier">much.</span>
         </div>
-        <button onClick={this.toggleModal} className="round-btn">{"Message " + this.state.name}</button>
+        <button onClick={this.toggleModal} className="user-profile-message-btn round-btn">{"Message " + this.state.name}</button>
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
                onClose={this.toggleModal}
                >

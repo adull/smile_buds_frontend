@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Header from '../../components/header/Header.js';
-import Body from '../../components/body/Body.js';
+import PostPageBody from '../../components/post-page/PostPageBody.js';
 import Balloons from '../../components/balloons/Balloons.js';
 
-class HomePage extends Component {
+class PostPage extends Component {
   constructor() {
-
     super();
     this.state = {
       balloonAmt: 0,
-      loggedIn: false,
+      loggedIn: false
     }
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
     this.addBalloon = this.addBalloon.bind(this);
   }
   componentWillMount() {
@@ -21,10 +18,7 @@ class HomePage extends Component {
       credentials: 'include'
     })
     .then(function(response) {
-      if(response.ok) {
-        console.log(response);
-        return response.json();
-      }
+      return response.json();
     })
     .then(function(json) {
       if(json) {
@@ -43,35 +37,23 @@ class HomePage extends Component {
   }
 
   addBalloon() {
-    console.log("add a balloon")
     this.setState({
       balloonAmt: this.state.balloonAmt + 1
     })
   }
 
-  login() {
-    this.setState({
-      loggedIn: true
-    })
-  }
-
-  logout() {
-    this.setState({
-      loggedIn: false
-    })
-  }
-
-
   render() {
-    console.log("render homepage again")
-    return (
+    var pathName = this.props.location.pathname;
+    var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
+    console.log(userIdentifier);
+    return(
       <div>
         <Header />
-        <Body userIdentifier={this.state.userIdentifier} addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} login={this.login} logout={this.logout}/>
+        <PostPageBody addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} postHash={userIdentifier}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>
-    );
+    )
   }
 }
 
-export default HomePage;
+export default PostPage;

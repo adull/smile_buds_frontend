@@ -16,10 +16,6 @@ class Feed extends Component {
   }
 
   isBottom(el) {
-    console.log("el get bounding");
-    console.log(el.getBoundingClientRect().bottom);
-    console.log("window inner height");
-    console.log(window.innerHeight);
     return el.getBoundingClientRect().bottom <= (window.innerHeight);
   }
 
@@ -71,8 +67,10 @@ class Feed extends Component {
 
   trackScrolling = this.debounce(function() {
     let feed = this.refs.feed;
-    if (this.isBottom(feed)) {
-      this.getPosts();
+    if(feed) {
+      if (this.isBottom(feed)) {
+        this.getPosts();
+      }  
     }
   }, 500)
 
