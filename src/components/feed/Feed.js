@@ -41,7 +41,6 @@ class Feed extends Component {
       credentials: 'include',
     })
     .then(function(response) {
-      console.log(response);
       if(response.ok ) {
         return response.json();
       }
@@ -70,7 +69,7 @@ class Feed extends Component {
     if(feed) {
       if (this.isBottom(feed)) {
         this.getPosts();
-      }  
+      }
     }
   }, 500)
 

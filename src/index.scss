@@ -230,6 +230,9 @@ html, body {
           font-family: 'Arial Rounded';
 
           border-top: 2px solid black;
+          &:hover {
+            text-decoration: underline;
+          }
           div {
             padding: 10px 0px;
             border-top: 2px solid black;

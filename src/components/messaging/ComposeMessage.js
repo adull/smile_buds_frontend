@@ -19,9 +19,6 @@ class ComposeMessage extends Component {
     event.preventDefault();
     const {message} = this.state;
 
-    // testing:
-    // this is what it should be, for testing purposes we are going to use 19
-    // fetch('/send-message/' + this.props.messaging, {
     fetch('/send-message/' + this.props.messaging, {
       credentials: 'include',
       method: 'POST',

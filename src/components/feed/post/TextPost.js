@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Post from './Post.js';
 import GrinButton from './GrinButton.js';
-
+import CommentSection from './comments/CommentSection.js';
 
 class TextPost extends Post {
   render() {
@@ -42,6 +42,7 @@ class TextPost extends Post {
             {this.state.post_stats}
           </div>
         </div>
+        <CommentSection hash={this.state.hash} />
       </div>
     );
   }

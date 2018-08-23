@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Notifications from '../notifications/Notifications.js';
+import {Link} from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -18,9 +19,9 @@ class Header extends Component {
   render() {
     return(
       <header>
-        <div className="smile-buddies">
+        <Link to="/" className="smile-buddies">
           <img src={ require('./smile_buds.png') } alt="Smile buds" />
-        </div>
+        </Link>
         <div className="header-text">
           <div className="header-text-title">
             <i>Smilebuddies</i>

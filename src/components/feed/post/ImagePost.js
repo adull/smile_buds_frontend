@@ -14,9 +14,11 @@ class ImagePost extends Post {
             </div>
           </Link>
           <div className="top-text">
-            <div className="text-name text-blue-arial">
-              {this.state.poster_name}
-            </div>
+            <Link to={"/user/" + this.state.poster_identifier}>
+              <div className="text-name text-blue-arial">
+                {this.state.poster_name}
+              </div>
+            </Link>
             <div className="text-love-val">
               loves you {this.state.love_amount} much
             </div>
