@@ -1,20 +1,30 @@
 import React, {Component} from 'react';
+import Modal from '../../../modal/Modal.js';
+import LoginOrSignup from '../../../account/LoginOrSignup.js'
 
 class WriteComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modalIsOpen: false,
       hash: props.hash,
       comment: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentWillReceiveProps(props) {
     this.setState({
       hash: props.hash
     })
+  }
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    });
   }
 
   handleInputChange(event) {
@@ -42,16 +52,28 @@ class WriteComment extends Component {
           // console.log(this.refs.messageInput)
           this.refs.commentInput.value = '';
         }
+        else if(response.reason) {
+          if(response.reason === "not-logged-in") {
+            this.setState({
+              modalIsOpen: true
+            })
+          }
+        }
       }
     })
   }
 
   render() {
     return(
-      <form className="write-comment" onSubmit={this.handleSubmit}>
-        <input className="comment-input" ref="commentInput"  name="comment" id="comment" type="text" value={this.state.comment} onChange={this.handleInputChange} placeholder={"Write a comment!"} autoComplete="off" required />
-        <input className="round-btn" type="submit" value="↝" />
-      </form>
+      <div className="write-comment-wrapper">
+        <form className="write-comment" onSubmit={this.handleSubmit}>
+          <input className="comment-input" ref="commentInput"  name="comment" id="comment" type="text" value={this.state.comment} onChange={this.handleInputChange} placeholder={"Write a comment!"} autoComplete="off" required />
+          <input className="round-btn send-btn" type="submit" value="↝" />
+        </form>
+        <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
+          <LoginOrSignup />
+        </Modal>
+      </div>
     )
   }
 }

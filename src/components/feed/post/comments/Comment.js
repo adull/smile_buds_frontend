@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Comment extends Component {
   constructor(props) {
@@ -8,10 +9,21 @@ class Comment extends Component {
     }
   }
   render() {
-    console.log(this.state.metadata)
     return(
       <div className="comment">
-        {this.state.metadata.comment}
+        <Link to={'/user/' + this.state.metadata.commenter_identifier} >
+          <div className="commenter">
+            <div className="commenter-picture">
+              <img src={"/get-profile-picture/" + this.state.metadata.commenter_identifier} />
+            </div>
+            <div className="commenter-name">
+              {this.state.metadata.commenter_name}
+            </div>
+          </div>
+        </Link>
+        <div className="comment-message">
+          {this.state.metadata.comment}
+        </div>
       </div>
     )
   }
