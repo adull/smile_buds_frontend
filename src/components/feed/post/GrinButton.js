@@ -46,11 +46,9 @@ class GrinButton extends Component {
       }
 
     })
-      // console.log(hash + " - " + response.grinned);
   }
 
   grinAt() {
-    console.log("grin at")
     let thisObj = this;
     let hash = this.props.hash;
     fetch('/grin-at/' + hash, {
@@ -61,21 +59,17 @@ class GrinButton extends Component {
     .catch(error => console.error('Error: ', error))
     .then(response => {
       if(response) {
-        console.log("okay there is a response")
         if(response.success) {
-          console.log("okay there is a successful response");
           thisObj.setState({
             grinningAt: true
           })
           thisObj.props.onGrin();
         }
         else {
-          console.log("grin - no response success");
           thisObj.setState({
             grinningAt: false
           })
           if(response.fail === "no-user") {
-            console.log("dis")
             thisObj.setState({
               modalIsOpen: true
             })
@@ -86,7 +80,6 @@ class GrinButton extends Component {
   }
 
   ungrinAt() {
-    console.log("ungrin at")
     let thisObj = this;
 
     let hash = this.props.hash;
@@ -105,7 +98,6 @@ class GrinButton extends Component {
           thisObj.props.onGrin();
         }
         else {
-          console.log("ungrin - no response success");
           thisObj.setState({
             grinningAt: true
           })

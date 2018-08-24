@@ -6,7 +6,7 @@ class AccountNotLoggedIn extends Component {
     return(
       <div className="account-no-user">
         <div className="account-top">
-          <div className="cta text-blue-arial">Login or sign up!</div>
+          <div className="cta text-blue-arial">Log in or sign up!</div>
         </div>
         <div className="account-bottom">
           <AccountButton value="login" loginSuccess = {this.props.login}/>

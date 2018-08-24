@@ -33,9 +33,11 @@ class PostStats extends Component {
         <div onClick={this.toggleModal} className="post-stats">
           {this.state.postStats}
         </div>
-        <Modal show={this.state.postStatsModalIsOpen}
+        <Modal className="grinner-list-modal"
+               show={this.state.postStatsModalIsOpen}
                onClose={this.toggleModal}
                >
+          <div className="grinner-list-title">Grinners</div>
           <GrinnerList grins={this.state.grins}/>
         </Modal>
       </div>

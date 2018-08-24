@@ -12,7 +12,7 @@ class TextPost extends Post {
         <div className="post-top">
           <div className="top-img">
             <Link to={"/user/" + this.state.poster_identifier} >
-              <img src={"/get-profile-picture/" + this.state.poster_identifier} alt="Jeff" />
+              <img src={"/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
             </Link>
           </div>
           <div className="top-text">

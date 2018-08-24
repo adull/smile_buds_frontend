@@ -121,7 +121,7 @@ class Post extends Component {
         recentGrin = json[0].user_name;
       }
       thisObj.setState({
-        // recent_grin: json[]
+        allGrins: json,
         grins: json.length,
         recent_grin: recentGrin,
         post_stats: thisObj.createGrinStats(recentGrin, json.length)

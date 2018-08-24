@@ -50,6 +50,7 @@ class WriteComment extends Component {
       if(response) {
         if(response.success) {
           // console.log(this.refs.messageInput)
+          this.props.commentPosted();
           this.refs.commentInput.value = '';
         }
         else if(response.reason) {

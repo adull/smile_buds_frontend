@@ -8,6 +8,7 @@ class CommentSection extends Component {
     this.state = {
       hash: props.hash
     }
+    this.rerender = this.rerender.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -16,11 +17,17 @@ class CommentSection extends Component {
     })
   }
 
+  rerender() {
+    this.setState({
+      hash: this.state.hash
+    })
+  }
+
   render() {
     return(
       <div className="comment-section">
         <Comments hash={this.state.hash} />
-        <WriteComment hash={this.state.hash} />
+        <WriteComment commentPosted={this.rerender} hash={this.state.hash} />
       </div>
     )
   }

@@ -37,7 +37,7 @@ class LoginOrSignup extends Component {
     return(
       <div className="login-or-signup">
         <div className="login-or-signup-title">
-          {"Login or signup to complete this action."}
+          {"Log in or signup to complete this action."}
         </div>
       </div>
     )
