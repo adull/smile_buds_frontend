@@ -17,7 +17,6 @@ class CommentSection extends Component {
   }
 
   render() {
-    console.log(this.state.hash);
     return(
       <div className="comment-section">
         <Comments hash={this.state.hash} />

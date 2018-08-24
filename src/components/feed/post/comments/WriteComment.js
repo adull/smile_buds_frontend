@@ -67,7 +67,7 @@ class WriteComment extends Component {
     return(
       <div className="write-comment-wrapper">
         <form className="write-comment" onSubmit={this.handleSubmit}>
-          <input className="comment-input" ref="commentInput"  name="comment" id="comment" type="text" value={this.state.comment} onChange={this.handleInputChange} placeholder={"Write a comment!"} autoComplete="off" required />
+          <input className="comment-input" ref="commentInput"  name="comment" type="text" value={this.state.comment} onChange={this.handleInputChange} placeholder={"Write a comment!"} autoComplete="off" required />
           <input className="round-btn send-btn" type="submit" value="↝" />
         </form>
         <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>

@@ -3,7 +3,6 @@ import Comment from './Comment.js'
 
 class Comments extends Component {
   constructor(props) {
-    console.log(props)
     super(props);
     this.state = {
       hash: props.hash,
@@ -29,7 +28,6 @@ class Comments extends Component {
       return;
     }
     else {
-      console.log("hash isnt undefined")
       this.getComments();
     }
   }
@@ -46,7 +44,6 @@ class Comments extends Component {
     })
     .then(function(json) {
       if(json.length > 0) {
-        console.log(json)
         thisObj.setState({
           comments: json
         })

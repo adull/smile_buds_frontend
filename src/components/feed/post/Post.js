@@ -18,6 +18,7 @@ class Post extends Component {
       reason: '',
       image_url: '',
       message: '',
+      allGrins: [],
       grins: 0,
       recent_grin: '',
       post_stats: ''
@@ -83,8 +84,10 @@ class Post extends Component {
       var recentGrin = "";
       if(json.length > 0) {
         recentGrin = json[0].user_name;
+        console.log(json)
       }
       thisObj.setState({
+        allGrins: json,
         // recent_grin: json[]
         grins: json.length,
         recent_grin: recentGrin,
