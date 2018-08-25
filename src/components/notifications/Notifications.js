@@ -55,7 +55,6 @@ class Notifications extends Component {
     .then(res => res.json())
     .catch(error => console.error("error: ", error))
     .then(response => {
-      console.log(props)
       if(response) {
         this.setState({
           notificationsArr: response,

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Post from './Post.js';
 import GrinButton from './GrinButton.js';
+import PostStats from './PostStats.js';
+import CommentSection from './comments/CommentSection.js';
 
 class ImagePost extends Post {
   render() {
@@ -40,10 +42,9 @@ class ImagePost extends Post {
           <div className="post-interaction">
             <GrinButton onGrin={this.didGrin} hash={this.state.hash} />
           </div>
-          <div className="post-stats">
-            {this.state.post_stats}
-          </div>
+          <PostStats stats={this.state.post_stats} allGrins={this.state.allGrins}/>
         </div>
+        <CommentSection hash={this.state.hash} />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PostNotification from './PostNotification.js';
 import MessageNotification from './MessageNotification.js';
+import CommentNotification from './CommentNotification.js'
 
 
 class NotificationBox extends Component {
@@ -22,7 +23,9 @@ class NotificationBox extends Component {
     }
     var elements = [];
     let notifications = this.state.notifications;
-    // console.log(notifications);
+    if(notifications.success === "no-user") {
+      return null;
+    }
     for(let i = 0; i < notifications.length; i ++) {
       let notification = notifications[i];
       if(notification.notification_type === "post") {
@@ -33,6 +36,11 @@ class NotificationBox extends Component {
       else if(notification.notification_type === "message") {
         elements.push(
           <MessageNotification setMessaging={this.props.setMessaging} toggleMessaging={this.props.toggleMessaging} key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
+        )
+      }
+      else if(notification.notification_type === "comment") {
+        elements.push(
+          <CommentNotification key={notification.id} metadata={notification} getNotifications={this.props.getNotifications} />
         )
       }
     }

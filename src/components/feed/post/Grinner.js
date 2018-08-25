@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 class Grinner extends Component {
   constructor(props) {
-    console.log(props)
     super(props);
     this.state = {
       userID: props.data.user_id,

@@ -19,8 +19,10 @@ class PostPageBody extends Component {
       credentials: 'include',
     })
     .then(function(response) {
-      if(response.ok) {
-        return response.json();
+      if(response) {
+        if(response.ok) {
+          return response.json();
+        }
       }
     })
     .then(function(json) {
