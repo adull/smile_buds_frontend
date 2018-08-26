@@ -28,7 +28,7 @@ class ImagePost extends Post {
               Subject: {this.state.subject}
             </div>
             <div className="text-reason">
-              Subject: {this.state.reason}
+              Reason for Post: {this.state.reason}
             </div>
           </div>
         </div>
