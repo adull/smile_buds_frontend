@@ -61,7 +61,7 @@ class UserHeader extends Component {
     return(
       <div className="user-header">
         <div className="user-header-item user-header-image">
-          <img src={'/get-profile-picture/' + this.state.hash} alt={this.state.name} />
+          <img src={'/api/get-profile-picture/' + this.state.hash} alt={this.state.name} />
         </div>
         <div className="user-header-item user-header-name">
           <span className="user-header-item-identifier">Name:</span> <span className="user-header-item-value">{this.state.name}</span>

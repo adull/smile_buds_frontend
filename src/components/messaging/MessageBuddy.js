@@ -40,7 +40,7 @@ class MessageBuddy extends Component {
     return (
       <div className={"message-buddy " + (this.props.active ? 'active':'not-active')} onClick={this.handleClick}>
         <div className="message-buddy-left">
-          <img className="message-buddy-picture" src={'/get-profile-picture/' + this.state.buddyPicture} alt={this.state.buddyName}/>
+          <img className="message-buddy-picture" src={'/api/get-profile-picture/' + this.state.buddyPicture} alt={this.state.buddyName}/>
         </div>
         <div className="message-buddy-right">
           <div className="message-buddy-name">{this.state.buddyName} says...</div>

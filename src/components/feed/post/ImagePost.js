@@ -12,7 +12,7 @@ class ImagePost extends Post {
         <div className="post-top">
           <Link to={"/user/" + this.state.poster_identifier}>
             <div className="top-img">
-              <img src={"/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
+              <img src={"/api/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
             </div>
           </Link>
           <div className="top-text">
@@ -34,7 +34,7 @@ class ImagePost extends Post {
         </div>
         <div className="post-bottom">
           <div className="post-image">
-            <img src={ "/get-image-from-post/" + this.state.hash } alt="maggie-post"  />
+            <img src={ "/api/get-image-from-post/" + this.state.hash } alt="maggie-post"  />
           </div>
           <div className="post-content text-blue-arial">
             {this.state.message}
