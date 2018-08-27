@@ -34,7 +34,7 @@ class Comments extends Component {
 
   getComments() {
     let thisObj = this;
-    fetch('/get-comments/' + this.state.hash, {
+    fetch('/api/get-comments/' + this.state.hash, {
       credentials: 'include'
     })
     .then(function(response) {

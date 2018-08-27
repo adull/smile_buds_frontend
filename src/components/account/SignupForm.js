@@ -48,7 +48,7 @@ class SignupForm extends Component {
       data.append("password", this.state.password);
       data.append("image", this.fileInput.current.files[0]);
       console.log(data);
-      fetch('/signup', {
+      fetch('/api/signup', {
         credentials: 'include',
         method: 'POST',
         // body: JSON.stringify({first_name, last_name, hobby, email, password}),
@@ -62,7 +62,7 @@ class SignupForm extends Component {
             let thisEmail = thisState.email;
             let thisPass = thisState.password;
             const {email, password} = {email: thisEmail, password: thisPass};
-            fetch('/signin', {
+            fetch('/api/signin', {
               credentials: 'include',
               method: 'POST',
               body: JSON.stringify({email, password}),

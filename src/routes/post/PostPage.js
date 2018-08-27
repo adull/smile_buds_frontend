@@ -14,7 +14,7 @@ class PostPage extends Component {
   }
   componentWillMount() {
     let thisObj = this;
-    fetch('/get-self', {
+    fetch('/api/get-self', {
       credentials: 'include'
     })
     .then(function(response) {

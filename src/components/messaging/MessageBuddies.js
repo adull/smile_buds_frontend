@@ -21,7 +21,7 @@ class MessageBuddies extends Component {
 
   getMessageBuddies() {
     let thisObj = this;
-    fetch('/get-message-buddies', {
+    fetch('/api/get-message-buddies', {
       credentials: 'include'
     })
     .then(res => res.json())

@@ -19,7 +19,7 @@ class ComposeMessage extends Component {
     event.preventDefault();
     const {message} = this.state;
 
-    fetch('/send-message/' + this.props.messaging, {
+    fetch('/api/send-message/' + this.props.messaging, {
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify({message}),

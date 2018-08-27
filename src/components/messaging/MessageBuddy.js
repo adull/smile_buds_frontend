@@ -16,7 +16,7 @@ class MessageBuddy extends Component {
   }
 
   componentWillMount() {
-    fetch('/get-user/userid/' + this.props.metadata.them, {
+    fetch('/api/get-user/userid/' + this.props.metadata.them, {
       credentials: 'include'
     })
     .then(res => res.json())

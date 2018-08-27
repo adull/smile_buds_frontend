@@ -19,7 +19,7 @@ class DisplayMessages extends Component {
   }
 
   getMessages(messaging) {
-    fetch('/get-messages/' + messaging, {
+    fetch('/api/get-messages/' + messaging, {
       credentials: 'include'
     })
     .then(res => res.json())

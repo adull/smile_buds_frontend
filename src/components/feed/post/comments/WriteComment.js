@@ -38,7 +38,7 @@ class WriteComment extends Component {
     let thisObj = this;
     event.preventDefault();
 
-    fetch('/write-comment/' + this.state.hash, {
+    fetch('/api/write-comment/' + this.state.hash, {
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify(this.state),

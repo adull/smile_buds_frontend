@@ -17,7 +17,7 @@ class Account extends Component {
 
   login() {
     let thisBouttaLogin = this;
-    fetch('/get-self', {
+    fetch('/api/get-self', {
       credentials: 'include'
     })
     .then(function(response) {
@@ -46,7 +46,7 @@ class Account extends Component {
 
   logout() {
     let thisBouttaLogout = this;
-    fetch('/logout', {
+    fetch('/api/logout', {
       credentials: 'include'
     })
     .then(function(response) {
@@ -64,7 +64,7 @@ class Account extends Component {
   componentWillMount() {
     // console.log("h???")
     let thisObj = this;
-    fetch('/get-self', {
+    fetch('/api/get-self', {
       credentials: 'include'
     })
     .then(function(response) {

@@ -27,7 +27,7 @@ class ImagePostForm extends Component {
     data.append("reason", this.state.reason);
     data.append("image", this.fileInput.current.files[0]);
 
-    fetch('/image-post', {
+    fetch('/api/image-post', {
       credentials: 'include',
       method: 'POST',
       body: data,

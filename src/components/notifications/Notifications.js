@@ -27,7 +27,7 @@ class Notifications extends Component {
   }
 
   getNotifications() {
-    fetch('/get-notifications', {
+    fetch('/api/get-notifications', {
       credentials: 'include'
     })
     .then(res => res.json())
@@ -49,7 +49,7 @@ class Notifications extends Component {
   }
 
   componentWillReceiveProps(props) {
-    fetch('/get-notifications', {
+    fetch('/api/get-notifications', {
       credentials: 'include'
     })
     .then(res => res.json())

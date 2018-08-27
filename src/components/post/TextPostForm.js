@@ -20,7 +20,7 @@ class TextPostForm extends Component {
     event.preventDefault();
     const {subject, message, reason} = this.state;
     // console.log({first_name, last_name});
-    fetch('/text-post', {
+    fetch('/api/text-post', {
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify({subject, message, reason}),

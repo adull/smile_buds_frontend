@@ -33,7 +33,7 @@ class LoginForm extends Component {
     }
     else {
       const {email, password} = this.state;
-      fetch('/signin', {
+      fetch('/api/signin', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify({email, password}),

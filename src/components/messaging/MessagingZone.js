@@ -21,7 +21,7 @@ class MessagingZone extends Component {
   }
 
   getMessages(userid) {
-    fetch('/get-messages/' + userid, {
+    fetch('/api/get-messages/' + userid, {
       credentials: 'include'
     })
     .then(res => res.json())

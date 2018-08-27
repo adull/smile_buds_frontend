@@ -11,7 +11,7 @@ class MessagingZoneHeader extends Component {
     if(this.state.buddyPicture === undefined || this.state.buddyName === undefined) {
       // console.log("this is what should trigger")
       // console.log(props.messaging);
-      fetch('/get-user/userid/' + props.messaging, {
+      fetch('/api/get-user/userid/' + props.messaging, {
         credentials: 'include'
       })
       .then(res => res.json())

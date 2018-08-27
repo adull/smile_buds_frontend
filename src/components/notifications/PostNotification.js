@@ -17,7 +17,7 @@ class PostNotification extends Notification {
   removeNotification() {
     let thisObj = this;
     console.log("clicked on a post notification");
-    fetch('/remove-post-notification/' + this.state.post, {
+    fetch('/api/remove-post-notification/' + this.state.post, {
       credentials: 'include'
     })
     .then(res => res.json())

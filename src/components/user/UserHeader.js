@@ -38,7 +38,7 @@ class UserHeader extends Component {
 
   componentWillMount() {
     let thisObj = this;
-    fetch('/get-user/identifier/' + this.props.user, {
+    fetch('/api/get-user/identifier/' + this.props.user, {
       credentials: 'include'
     })
     .then(function(response) {

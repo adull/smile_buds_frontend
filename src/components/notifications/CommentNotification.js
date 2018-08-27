@@ -17,7 +17,7 @@ class CommentNotification extends Notification {
   removeNotification() {
     let thisObj = this;
     console.log("clicked on a comment notification");
-    fetch('/remove-comment-notification/' + this.state.post, {
+    fetch('/api/remove-comment-notification/' + this.state.post, {
       credentials: 'include'
     })
     .then(res => res.json())

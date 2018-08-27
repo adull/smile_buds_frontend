@@ -61,7 +61,7 @@ class Post extends Component {
   componentWillMount() {
     let thisObj = this;
     let posterId = this.props.metadata.poster_id;
-    fetch('/get-user/userid/' + posterId, {
+    fetch('/api/get-user/userid/' + posterId, {
       credentials: 'include'
     })
     .then(function(response) {
@@ -74,7 +74,7 @@ class Post extends Component {
         poster_identifier: json.identifier
       })
     })
-    fetch('/get-grins/' + this.props.metadata.hash, {
+    fetch('/api/get-grins/' + this.props.metadata.hash, {
       credentials: 'include'
     })
     .then(function(response) {
@@ -108,7 +108,7 @@ class Post extends Component {
 
   didGrin() {
     let thisObj = this;
-    fetch('/get-grins/' + this.props.metadata.hash, {
+    fetch('/api/get-grins/' + this.props.metadata.hash, {
       credentials: 'include'
     })
     .then(function(response) {

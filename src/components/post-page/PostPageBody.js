@@ -15,7 +15,7 @@ class PostPageBody extends Component {
   }
   componentWillMount() {
     let thisObj = this;
-    fetch('/get-feed-post/' + this.state.postHash, {
+    fetch('/api/get-feed-post/' + this.state.postHash, {
       credentials: 'include',
     })
     .then(function(response) {

@@ -37,7 +37,7 @@ class Feed extends Component {
 
   getPosts() {
     let thisObj = this;
-    fetch('/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived, {
+    fetch('/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived, {
       credentials: 'include',
     })
     .then(function(response) {
