@@ -47,6 +47,7 @@ class Feed extends Component {
     })
     .then(function(json) {
       if(json) {
+        console.log(json);
         thisObj.setState({
           postsReceived: thisObj.state.postsReceived + json.length,
           postsArr: thisObj.state.postsArr.concat(json)

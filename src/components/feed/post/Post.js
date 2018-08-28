@@ -21,7 +21,9 @@ class Post extends Component {
       allGrins: [],
       grins: 0,
       recent_grin: '',
-      post_stats: ''
+      post_stats: '',
+      delete: false,
+      deleteContent: false
     }
     this.createGrinStats = this.createGrinStats.bind(this);
     this.didGrin = this.didGrin.bind(this);
@@ -99,10 +101,10 @@ class Post extends Component {
     let metadata = this.props.metadata;
     this.setState ({
       hash: metadata.hash,
-      love_amount: 0,
       subject: metadata.subject,
       reason: metadata.reason,
-      message: metadata.message
+      message: metadata.message,
+      delete: metadata.deletePermission
     });
   }
 

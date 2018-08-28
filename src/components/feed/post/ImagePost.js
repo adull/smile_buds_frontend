@@ -4,6 +4,7 @@ import Post from './Post.js';
 import GrinButton from './GrinButton.js';
 import PostStats from './PostStats.js';
 import CommentSection from './comments/CommentSection.js';
+import Delete from './Delete.js'
 
 class ImagePost extends Post {
   render() {
@@ -45,6 +46,7 @@ class ImagePost extends Post {
           <PostStats stats={this.state.post_stats} allGrins={this.state.allGrins}/>
         </div>
         <CommentSection hash={this.state.hash} />
+        <Delete show={this.state.delete} hash={this.state.hash} delete={this.deleteContent}/>
       </div>
     );
   }
