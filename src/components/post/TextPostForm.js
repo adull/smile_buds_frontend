@@ -6,7 +6,8 @@ class TextPostForm extends Component {
     this.state = {
       subject: '',
       message: '',
-      reason: ''
+      reason: '',
+      uploading: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -18,6 +19,9 @@ class TextPostForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({
+      uploading: true
+    })
     const {subject, message, reason} = this.state;
     // console.log({first_name, last_name});
     fetch('/api/text-post', {
@@ -31,6 +35,9 @@ class TextPostForm extends Component {
     .then(response => {
       console.log('Success:', response);
       if(response.success) {
+        this.setState({
+          uploading: false
+        })
         this.props.close();
       }
     });
@@ -53,6 +60,7 @@ class TextPostForm extends Component {
             Reason for Post:
             <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
           </label>
+          { this.state.uploading ? <div className="uploading"></div> : null }
           <div className="submit-options">
            <input className="round-btn" type="submit" value="Post It!" />
            <button className="round-btn" onClick={this.props.onClose} >Do not post</button>

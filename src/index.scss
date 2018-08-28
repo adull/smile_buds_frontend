@@ -810,6 +810,13 @@ html, body {
   .round-btn {
     margin: 0 30px;
   }
+  .post-fail {
+    text-align: center;
+    font-family: 'Arial Rounded';
+    color: $red;
+    font-size: 18px;
+    margin: 15px 0px 30px;
+  }
 
 }
 
@@ -831,6 +838,20 @@ html, body {
     font-size: 18px;
     margin: 15px 0px 30px;
   }
+}
+
+.uploading {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #84a4cb;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .grinner-list-modal {

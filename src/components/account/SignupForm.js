@@ -12,7 +12,8 @@ class SignupForm extends Component {
       password: '',
       password_repeat: '',
       error: false,
-      error_type: ''
+      error_type: '',
+      uploading: false
     };
 
     this.fileInput = React.createRef();
@@ -34,6 +35,9 @@ class SignupForm extends Component {
       return;
     }
     else {
+      this.setState({
+        uploading: true
+      })
       var thisState = this.state;
       let data = new FormData();
       data.append("first_name", this.state.first_name);
@@ -66,6 +70,9 @@ class SignupForm extends Component {
             .catch(error => console.error('Error:', error))
             .then(response => {
               if(response.success) {
+                this.setState({
+                  uploading: false
+                })
                 this.props.signupSuccess();
                 this.props.close();
               }
@@ -76,13 +83,15 @@ class SignupForm extends Component {
               if(response.reason === "file-size") {
                 this.setState({
                   error: true,
-                  error_type: "fileSize"
+                  error_type: "fileSize",
+                  uploading: false
                 })
               }
               if(response.reason === "email-exists") {
                 this.setState({
                   error: true,
-                  error_type: "emailExists"
+                  error_type: "emailExists",
+                  uploading: false
                 })
               }
             }
@@ -131,6 +140,7 @@ class SignupForm extends Component {
              Repeat your Password:
              <input name="password_repeat" id="password_repeat" type="password" value={this.state.value} onChange={this.handleInputChange} required/>
            </label>
+           { this.state.uploading ? <div className="uploading"></div> : null }
            <SignupFail show={this.state.error} errorType={this.state.error_type} />
            <div className="submit-options">
             <input className="round-btn" type="submit" value="Sign Up!" />

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PostFail from './PostFail.js'
 
 class ImagePostForm extends Component {
   constructor() {
@@ -6,7 +7,10 @@ class ImagePostForm extends Component {
     this.state = {
       subject: '',
       message: '',
-      reason: ''
+      reason: '',
+      error: false,
+      error_type: '',
+      uploading: false
     };
 
     this.fileInput = React.createRef();
@@ -19,8 +23,10 @@ class ImagePostForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({
+      uploading: true
+    })
     // const {subject, message, reason} = this.state;
-    console.log(this.fileInput.current.files[0]);
     let data = new FormData();
     data.append("subject", this.state.subject);
     data.append("message", this.state.message);
@@ -37,11 +43,24 @@ class ImagePostForm extends Component {
     .catch(error => console.error('Error:', error))
     .then(response => {
       console.log('Success:', response);
-      if(response.success) {
-        this.props.close();
+      if(response) {
+        if(response.reason) {
+          if(response.reason === "file-size") {
+            this.setState({
+              error: true,
+              error_type: "fileSize",
+              uploading: false
+            })
+          }
+        }
+        if(response.success) {
+          this.setState({
+            uploading: false
+          })
+          this.props.close();
+        }
       }
-      }
-    );
+    });
   }
 
   render() {
@@ -67,6 +86,8 @@ class ImagePostForm extends Component {
             Upload a funny picture! (Hey, no files bigger than 5 MB now!)
             <input name="image" id="image" type ="file" accept="image/png, image/jpg, image/jpeg" ref={this.fileInput} required />
           </label>
+          { this.state.uploading ? <div className="uploading"></div> : null }
+          <PostFail show={this.state.error} errorType={this.state.error_type} />
           <div className="submit-options">
            <input className="round-btn" type="submit" value="Post It!" />
            <button className="round-btn" onClick={this.props.onClose} >Do not post</button>
