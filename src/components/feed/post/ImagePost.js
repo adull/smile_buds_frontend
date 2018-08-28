@@ -7,7 +7,21 @@ import CommentSection from './comments/CommentSection.js';
 import Delete from './Delete.js'
 
 class ImagePost extends Post {
+  constructor() {
+    super();
+
+    this.deleteContent = this.deleteContent.bind(this)
+  }
+  deleteContent() {
+    // console.log("fuck");
+    this.setState({
+      deleteContent: true
+    })
+  }
   render() {
+    if(this.state.deleteContent === true) {
+      return null;
+    }
     return(
       <div className="post image-post">
         <div className="post-top">
@@ -46,7 +60,7 @@ class ImagePost extends Post {
           <PostStats stats={this.state.post_stats} allGrins={this.state.allGrins}/>
         </div>
         <CommentSection hash={this.state.hash} />
-        <Delete show={this.state.delete} hash={this.state.hash} delete={this.deleteContent}/>
+        <Delete clicked={this.deleteContent} show={this.state.delete} hash={this.state.hash}/>
       </div>
     );
   }
