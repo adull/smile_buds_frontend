@@ -386,16 +386,27 @@ html, body {
           flex-direction: column;
           .cta {
             text-align: center;
-            font-size: 3.5vw;
+            font-size: 42px;
           }
         }
         .account-bottom {
           display: flex;
           height: 50%;
           margin: 0 auto;
-          .round-btn {
-            margin: 0 30px;
+          @media(max-width: $bp-sm) {
+            height: auto;
+            flex-direction: column;
+            text-align: center;
           }
+          .account-btn-wrapper {
+            @media(max-width: $bp-sm) {
+              margin: 15px auto;
+            }
+            .round-btn {
+              margin: 0 30px;
+            }
+          }
+
         }
       }
     }
@@ -453,6 +464,13 @@ html, body {
         width: calc(100% - 350px);
         @media(max-width: $bp-sm) {
           width: 100%;
+        }
+        .feed-error {
+          font-size: 42px;
+          color: $blue;
+          font-family: 'Arial Rounded';
+          text-align: center;
+          margin: 0 10%;
         }
         .post {
           width: 80%;
@@ -668,6 +686,10 @@ html, body {
             width: 300px;
             border-radius: 300px;
             border: 4px solid $grey-blue;
+            @media(max-width: $bp-xs) {
+              width: 100%;
+              height: auto;
+            }
           }
         }
       }
@@ -727,6 +749,14 @@ html, body {
       text-align: center;
       font-size: 28px;
       margin: 15px 0px;
+      font-family: 'Arial Rounded';
+      color: $blue;
+      a {
+        color: darken($blue, 20%);
+        &:visited {
+          color: darken($blue, 20%);
+        }
+      }
     }
   }
 }
@@ -737,6 +767,9 @@ html, body {
     color: $blue;
     font-size: 24px;
     margin: 50px;
+    @media(max-width: $bp-xs) {
+      margin: 15px;
+    }
   }
 }
 

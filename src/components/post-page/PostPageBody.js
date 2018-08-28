@@ -10,6 +10,7 @@ class PostPageBody extends Component {
     this.state = {
       loggedIn: props.loggedIn,
       postHash: props.postHash,
+      postExists: true,
       metadata: null
     }
   }
@@ -27,6 +28,11 @@ class PostPageBody extends Component {
     })
     .then(function(json) {
       if(json) {
+        if(json.reason === "no-post") {
+          thisObj.setState({
+            postExists: false
+          })
+        }
         // console.log(json);
         thisObj.setState({
           metadata: json
@@ -37,33 +43,51 @@ class PostPageBody extends Component {
   render() {
     let element = [];
     let metadata = this.state.metadata;
-    if(metadata) {
-      let image = metadata.image;
-      if(image === 0) {
-        element.push(
-          <TextPost key={metadata.id} metadata={metadata} />
-        );
+    if(this.state.postExists) {
+      if(metadata) {
+        let image = metadata.image;
+        if(image === 0) {
+          element.push(
+            <TextPost key={metadata.id} metadata={metadata} />
+          );
+        }
+        else if(image === 1) {
+          element.push(
+            <ImagePost key={metadata.id} metadata={metadata} />
+          );
+        }
+        return(
+          <div className="body">
+            <div className="feed-section">
+              <Sidebar addBalloon={this.props.addBalloon} loggedIn={this.state.loggedIn}/>
+              <div className="feed-wrapper">
+                <div className="feed">
+                  {element}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
       }
-      else if(image === 1) {
-        element.push(
-          <ImagePost key={metadata.id} metadata={metadata} />
-        );
+      else {
+        return null;
       }
+    }
+    else {
       return(
         <div className="body">
           <div className="feed-section">
             <Sidebar addBalloon={this.props.addBalloon} loggedIn={this.state.loggedIn}/>
             <div className="feed-wrapper">
               <div className="feed">
-                {element}
+                <div className="feed-error">
+                  The post couldn’t be found! It was likely deleted. Smile!
+                </div>
               </div>
             </div>
           </div>
         </div>
       )
-    }
-    else {
-      return null;
     }
   }
 }

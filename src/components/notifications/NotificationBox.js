@@ -55,7 +55,7 @@ class NotificationBox extends Component {
     else {
       return(
         <div className="notifications-box" onClick={this.props.onClose}>
-          Youre all caught up, Smile Buddy!
+          <div className="notifications-box-caught-up">You’re all caught up, Smile Buddy!</div>
         </div>
       )
     }

@@ -21,7 +21,7 @@ class AccountButton extends Component {
     if(this.props.value === "login") {
       buttonText = "Log in!"
       return (
-        <div>
+        <div className="account-btn-wrapper">
           <button onClick={this.toggleModal} className="round-btn">{buttonText}</button>
 
           <Modal show={this.state.isOpen}

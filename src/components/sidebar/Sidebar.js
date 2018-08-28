@@ -9,14 +9,21 @@ class Sidebar extends Component {
     super(props);
 
     this.state = {
-      isOpen: false,
+      messengerIsOpen: false,
+      aboutIsOpen: false,
       loggedIn: props.loggedIn
     };
   }
 
-  toggleModal = () => {
+  toggleAboutModal = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      aboutIsOpen: !this.state.aboutIsOpen
+    });
+  }
+
+  toggleMessengerModal = () => {
+    this.setState({
+      messengerIsOpen: !this.state.messengerIsOpen
     });
   }
 
@@ -38,25 +45,17 @@ class Sidebar extends Component {
               Smile Feed
             </div>
           </Link>
-          <div onClick={this.toggleModal} className="sidebar-option">
+          <div onClick={this.toggleMessengerModal} className="sidebar-option">
             <div className="option-image">
               <img src={ require('./chat.png') } alt="Chat" />
             </div>
             <div className="option-title">
               Messages
             </div>
-            <Modal className="messaging-modal" show={this.state.isOpen} onClose={this.toggleModal}>
+            <Modal className="messaging-modal" show={this.state.messengerIsOpen} onClose={this.toggleMessengerModal}>
               <Messaging mobileView="buddies" loggedIn={this.state.loggedIn}/>
             </Modal>
           </div>
-          <Link to="/" className="sidebar-option">
-            <div className="option-image">
-              <img src={ require('./diamong.png') } alt="Diamond" />
-            </div>
-            <div className="option-title">
-              Bouncy Balls
-            </div>
-          </Link>
           <div onClick={this.props.addBalloon} className="sidebar-option">
             <div className="option-image">
               <img src={ require('./umbrella.png') } alt="Umbrella" />
@@ -64,6 +63,23 @@ class Sidebar extends Component {
             <div className="option-title">
               Balloons
             </div>
+          </div>
+          <div onClick={this.toggleAboutModal} className="sidebar-option">
+            <div className="option-image">
+              <img src={ require('./diamong.png') } alt="Diamond" />
+            </div>
+            <div className="option-title">
+              About
+            </div>
+            <Modal className="modal" show={this.state.aboutIsOpen} onClose={this.toggleAboutModal}>
+              <div className="modal-content">
+                <div className="modal-title">
+                  Watch <a href="http://www.adultswim.com/videos/infomercials/dayworld" target="_blank">Dayworld</a> on Adult Swim.
+                  <br /><br />
+                  Developed by <a href="http://abdelrazaq.com" target="_blank">Adlai Abdelrazaq</a>
+                </div>
+              </div>
+            </Modal>
           </div>
         </div>
       </div>
