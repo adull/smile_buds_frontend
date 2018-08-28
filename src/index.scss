@@ -238,6 +238,12 @@ html, body {
         position: absolute;
         z-index: 99;
         background-color: white;
+        .notifications-box-caught-up {
+          color: $blue;
+          text-decoration: none;
+          font-size: 16px;
+          font-family: 'Arial Rounded';
+        }
         .notification {
           color: $blue;
           text-decoration: none;
