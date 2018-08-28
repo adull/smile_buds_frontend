@@ -18,7 +18,7 @@ class AccountLoggedIn extends Component {
             <Logout logout={this.props.logout}/>
           </div>
           <div className="account-right-bottom">
-            <PostBar />
+            <PostBar newPost={this.props.newPost}/>
           </div>
         </div>
       </div>

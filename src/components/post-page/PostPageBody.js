@@ -28,7 +28,7 @@ class PostPageBody extends Component {
     })
     .then(function(json) {
       if(json) {
-        if(json.reason === "no-post") {
+        if(json.error_reason === "no-post") {
           thisObj.setState({
             postExists: false
           })

@@ -44,8 +44,8 @@ class ImagePostForm extends Component {
     .then(response => {
       console.log('Success:', response);
       if(response) {
-        if(response.reason) {
-          if(response.reason === "file-size") {
+        if(response.error_reason) {
+          if(response.error_reason === "file-size") {
             this.setState({
               error: true,
               error_type: "fileSize",
@@ -57,7 +57,8 @@ class ImagePostForm extends Component {
           this.setState({
             uploading: false
           })
-          this.props.close();
+          // this.props.close();
+          this.props.postSuccess(response.hash);
         }
       }
     });

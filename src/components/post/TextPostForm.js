@@ -35,10 +35,11 @@ class TextPostForm extends Component {
     .then(response => {
       console.log('Success:', response);
       if(response.success) {
+        console.log(response);
         this.setState({
           uploading: false
         })
-        this.props.close();
+        this.props.postSuccess(response.hash);
       }
     });
   }

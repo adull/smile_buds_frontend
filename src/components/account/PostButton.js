@@ -7,6 +7,7 @@ class PostButton extends Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
+    this.postSuccess = this.postSuccess.bind(this);
   }
 
   toggleModal = () => {
@@ -14,6 +15,12 @@ class PostButton extends Component {
       isOpen: !this.state.isOpen
     })
   }
+
+  postSuccess(hash) {
+    this.toggleModal();
+    this.props.newPost(hash);
+  }
+
   render() {
     let buttonText;
     if(this.props.value === 'new-post') {
@@ -24,7 +31,7 @@ class PostButton extends Component {
           <Modal show={this.state.isOpen}
                  onClose={this.toggleModal}
                  >
-              <TextPostForm close={this.toggleModal} />
+              <TextPostForm postSuccess={this.postSuccess} />
           </Modal>
         </div>
       );
@@ -37,7 +44,7 @@ class PostButton extends Component {
           <Modal show={this.state.isOpen}
                  onClose={this.toggleModal}
                  >
-              <ImagePostForm close={this.toggleModal} />
+              <ImagePostForm postSuccess={this.postSuccess} />
           </Modal>
         </div>
       );

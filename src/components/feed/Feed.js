@@ -47,7 +47,14 @@ class Feed extends Component {
     })
     .then(function(json) {
       if(json) {
-        console.log(json);
+        let newPosts = 0;
+        let jsonOriginalPosts = []
+        for(var i = 0; i < json.length; i ++) {
+          if(!(thisObj.state.postsArr.includes(json[i]))) {
+            newPosts++;
+            jsonOriginalPosts.push(json[i]);
+          }
+        }
         thisObj.setState({
           postsReceived: thisObj.state.postsReceived + json.length,
           postsArr: thisObj.state.postsArr.concat(json)
@@ -58,11 +65,41 @@ class Feed extends Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.trackScrolling);
+    console.log("this.getPosts();")
     this.getPosts();
   }
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.trackScrolling);
+  }
+
+  componentWillReceiveProps(props) {
+    let thisObj = this;
+    if(props.newPost !== '') {
+      console.log(props.newPost);
+      fetch('/api/get-feed-post/' + props.newPost, {
+        credentials: 'include'
+      })
+      .then(function(response) {
+        console.log(response)
+        return response.json();
+      })
+      .then(function(json) {
+        console.log(json)
+        if(json.error_reason) {
+        }
+        else {
+          console.log(thisObj.state.postsArr)
+          let jsonArr = []
+          jsonArr.push(json)
+          thisObj.setState({
+            postsReceived: thisObj.state.postsReceived + json.length,
+            postsArr: jsonArr.concat(thisObj.state.postsArr)
+          })
+          console.log(thisObj.state.postsArr)
+        }
+      })
+    }
   }
 
   trackScrolling = this.debounce(function() {

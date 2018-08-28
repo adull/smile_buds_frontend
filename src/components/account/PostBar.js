@@ -5,8 +5,8 @@ class PostBar extends Component {
   render() {
     return(
       <div className="post-bar">
-        <PostButton value="new-post" />
-        <PostButton value="funny-photo" />
+        <PostButton value="new-post" newPost={this.props.newPost}/>
+        <PostButton value="funny-photo" newPost={this.props.newPost}/>
       </div>
     );
   }

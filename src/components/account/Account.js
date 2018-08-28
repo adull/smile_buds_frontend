@@ -103,7 +103,7 @@ class Account extends Component {
     }
     else {
       return(
-        <AccountLoggedIn name={this.state.user} identifier={this.state.useridentifier} logout={this.logout}/>
+        <AccountLoggedIn name={this.state.user} identifier={this.state.useridentifier} logout={this.logout} newPost={this.props.newPost}/>
       );
     }
   }
