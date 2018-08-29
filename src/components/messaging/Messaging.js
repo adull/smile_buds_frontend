@@ -15,12 +15,14 @@ class Messaging extends Component {
       loggedIn: props.loggedIn,
       messaging: props.messaging,
       buddyPicture: '',
-      buddyName: ''
+      buddyName: '',
+      // showMessagingZone: true
     }
     this.messagingUser = this.messagingUser.bind(this);
     this.rerender = this.rerender.bind(this);
     this.setToViewMessages = this.setToViewMessages.bind(this);
     this.setToViewMessageBuddies = this.setToViewMessageBuddies.bind(this);
+    // this.hideMessagingZone = this.hideMessagingZone.bind(this);
   }
 
   toggleModal = () => {
@@ -37,6 +39,12 @@ class Messaging extends Component {
       buddyName: buddyName
     })
   }
+
+  // hideMessagingZone() {
+  //   this.setState({
+  //     showMessagingZone: false
+  //   })
+  // }
 
   rerender() {
     this.setState({
@@ -69,7 +77,7 @@ class Messaging extends Component {
     if(this.state.loggedIn === true) {
       return(
         <div className="messaging">
-          <MessageBuddies mobileView={this.state.mobileView} changeView={this.setToViewMessages} setMessaging={this.messagingUser} messaging={this.state.messaging}/>
+          <MessageBuddies mobileView={this.state.mobileView} changeView={this.setToViewMessages} setMessaging={this.messagingUser} messaging={this.state.messaging} />
           <MessagingZone mobileView={this.state.mobileView} changeView={this.setToViewMessageBuddies} success={this.rerender} messaging={this.state.messaging} messagingImage={this.state.buddyPicture} messagingName={this.state.buddyName}/>
         </div>
       )

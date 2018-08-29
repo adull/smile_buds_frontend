@@ -44,6 +44,8 @@ class GrinButton extends Component {
         }
         return;
       }
+      else {
+      }
 
     })
   }

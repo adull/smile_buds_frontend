@@ -7,7 +7,8 @@ class Feed extends Component {
     super();
     this.state = {
       postsReceived: 0,
-      postsArr: []
+      postsArr: [],
+      loading: false
     }
     this.isBottom = this.isBottom.bind(this);
     this.getPosts = this.getPosts.bind(this);
@@ -36,6 +37,9 @@ class Feed extends Component {
 
 
   getPosts() {
+    this.setState({
+      loading: true
+    })
     let thisObj = this;
     fetch('/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived, {
       credentials: 'include',
@@ -57,7 +61,8 @@ class Feed extends Component {
         }
         thisObj.setState({
           postsReceived: thisObj.state.postsReceived + json.length,
-          postsArr: thisObj.state.postsArr.concat(json)
+          postsArr: thisObj.state.postsArr.concat(json),
+          loading: false
         })
       }
     })
@@ -132,6 +137,7 @@ class Feed extends Component {
     return(
       <div className="feed" ref="feed">
         {elements}
+        { this.state.loading ? <div className="uploading"></div> : null }
       </div>
     )
   }

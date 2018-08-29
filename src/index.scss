@@ -425,6 +425,7 @@ html, body {
       .sidebar {
         // width: 40%;
         width: 350px;
+        margin-bottom: 50px;
         @media(max-width: $bp-sm) {
           width: 100%;
         }
@@ -610,17 +611,34 @@ html, body {
             padding: 15px 0px;
             border-top: 2px solid $grey;
             .comments {
+              @media(max-width: $bp-sm) {
+                margin-bottom: 30px;
+              }
               .comment {
                 margin-bottom: 10px;
                 min-height: 100px;
                 border-radius: 50px;
                 background-color: $blue;
                 display: flex;
+                @media(max-width: $bp-sm) {
+                  // padding: 15px 0;
+                  flex-direction: column;
+                }
                 .commenter {
                   height: 100%;
                   display: flex;
+                  @media(max-width: $bp-sm) {
+                    margin: 0 15px;
+                    justify-content: center;
+                    border-bottom: 3px solid white;
+                  }
                   .commenter-picture {
                     height: 100%;
+                    display: flex;
+                    align-items: center;
+                    @media(max-width: $bp-sm) {
+                      padding: 15px 0;
+                    }
                     img {
                       height: 100px;
                       width: 100px;
@@ -638,6 +656,9 @@ html, body {
                     font-size: 24px;
                     color: white;
                     font-family: 'Arial Rounded';
+                    @media(max-width: $bp-sm) {
+                      border-right: 0px;
+                    }
                   }
                 }
                 .comment-message {
@@ -806,6 +827,11 @@ html, body {
       height: 100px;
     }
   }
+  .file-label {
+    input {
+      border: 0px;
+    }
+  }
 
   .round-btn {
     margin: 0 30px;
@@ -903,6 +929,15 @@ html, body {
     width: 100%;
     display: flex;
     height: 100%;
+    .no-message-buddies {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 24px;
+      font-family: 'Arial Rounded';
+      color: $blue;
+      text-align: center;
+    }
     .message-buddies {
       display: flex;
       flex-direction: column;
@@ -953,6 +988,15 @@ html, body {
           justify-content: center;
           flex-direction: column;
           margin: 0 25px;
+          font-family: 'Arial Rounded';
+          .message-buddy-name {
+            color: darken($blue, 10%);
+            font-size: 18px;
+          }
+          .message-preview {
+            color: $blue;
+            font-size: 14px;
+          }
         }
       }
     }

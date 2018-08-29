@@ -43,7 +43,7 @@ class MessageBuddy extends Component {
           <img className="message-buddy-picture" src={'/api/get-profile-picture/' + this.state.buddyPicture} alt={this.state.buddyName}/>
         </div>
         <div className="message-buddy-right">
-          <div className="message-buddy-name">{this.state.buddyName} says...</div>
+          <div className="message-buddy-name">{this.state.buddyName} </div>
           <div className="message-preview">“{this.state.messagePreview}”</div>
         </div>
       </div>
