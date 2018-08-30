@@ -19,9 +19,9 @@ class Header extends Component {
   render() {
     return(
       <header>
-        <Link to="/" className="smile-buddies">
+        <a href="/" className="smile-buddies">
           <img src={ require('./smile_buds.png') } alt="Smile buds" />
-        </Link>
+        </a>
         <div className="header-text">
           <div className="header-text-title">
             <i>Smilebuddies</i>

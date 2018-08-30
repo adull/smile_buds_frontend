@@ -37,14 +37,14 @@ class Sidebar extends Component {
     return(
       <div className="sidebar">
         <div className="sidebar-options-wrapper">
-          <Link to="/" className="sidebar-option">
+          <a href="/" className="sidebar-option">
             <div className="option-image">
               <img src={ require('./star.png') } alt="Star" />
             </div>
             <div className="option-title">
               Smile Feed
             </div>
-          </Link>
+          </a>
           <div onClick={this.toggleMessengerModal} className="sidebar-option">
             <div className="option-image">
               <img src={ require('./chat.png') } alt="Chat" />

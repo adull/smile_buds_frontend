@@ -69,7 +69,8 @@ $bp-lg: 1200px;
   font-size: 28px;
   border-radius: 100px;
   text-transform: uppercase;
-  border: 2px solid black;
+  // border: 2px solid black;
+  border: none;
   cursor: pointer;
   &:focus, &:active {
     outline: none;
@@ -118,6 +119,7 @@ html, body {
     .smile-buddies {
       width: 25%;
       margin: 15px;
+      position: relative;
       @media(max-width: $bp-sm)  {
         margin: 0px;
         width: 100%;
@@ -130,10 +132,11 @@ html, body {
       }
       img {
         width: 100%;
-        position: relative;
+        position: absolute;
         top: 50%;
         transform: translateY(-50%);
         @media(max-width: $bp-sm) {
+          position: relative;
           top: 0;
           transform: translateX(-50%);
           left: 50%;
@@ -384,6 +387,7 @@ html, body {
         height: 300px;
         display: flex;
         flex-direction: column;
+        margin-bottom: 50px;
         .account-top {
           height: 50%;
           width: 100%;
@@ -399,6 +403,7 @@ html, body {
           display: flex;
           height: 50%;
           margin: 0 auto;
+          justify-content: center;
           @media(max-width: $bp-sm) {
             height: auto;
             flex-direction: column;
@@ -417,7 +422,7 @@ html, body {
       }
     }
     .feed-section {
-      margin-top: 50px;
+      // margin-top: 50px;
       display: flex;
       @media(max-width: $bp-sm) {
         flex-direction: column;
@@ -588,6 +593,7 @@ html, body {
                   margin-left: 30px;
                   padding: 0px 15px;
                   font-family: 'Arial Rounded';
+                  border: none;
                   cursor: pointer;
                   @media(max-width: $bp-sm) {
                     font-size: 16px;
@@ -614,62 +620,82 @@ html, body {
               @media(max-width: $bp-sm) {
                 margin-bottom: 30px;
               }
-              .comment {
-                margin-bottom: 10px;
-                min-height: 100px;
-                border-radius: 50px;
-                background-color: $blue;
+              .comment-wrapper {
                 display: flex;
-                @media(max-width: $bp-sm) {
-                  // padding: 15px 0;
-                  flex-direction: column;
-                }
-                .commenter {
-                  height: 100%;
+                align-items: center;
+                width: 100%;
+                .comment {
+                  width: 100%;
+                  margin-bottom: 10px;
+                  min-height: 100px;
+                  border-radius: 50px;
+                  background-color: $blue;
                   display: flex;
                   @media(max-width: $bp-sm) {
-                    margin: 0 15px;
-                    justify-content: center;
-                    border-bottom: 3px solid white;
+                    // padding: 15px 0;
+                    flex-direction: column;
                   }
-                  .commenter-picture {
+                  .commenter {
                     height: 100%;
                     display: flex;
-                    align-items: center;
                     @media(max-width: $bp-sm) {
-                      padding: 15px 0;
+                      margin: 0 15px;
+                      justify-content: center;
+                      border-bottom: 3px solid white;
                     }
-                    img {
-                      height: 100px;
-                      width: 100px;
-                      border-radius: 50px;
+                    .commenter-picture {
+                      height: 100%;
+                      display: flex;
+                      align-items: center;
+                      @media(max-width: $bp-sm) {
+                        padding: 15px 0;
+                      }
+                      img {
+                        height: 100px;
+                        width: 100px;
+                        border-radius: 50px;
+                      }
+                    }
+                    .commenter-name {
+                      margin: 10px 0px;
+                      padding: 0 15px;
+                      border-right: 3px solid white;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      flex-direction: column;
+                      font-size: 24px;
+                      color: white;
+                      font-family: 'Arial Rounded';
+                      @media(max-width: $bp-sm) {
+                        border-right: 0px;
+                      }
                     }
                   }
-                  .commenter-name {
-                    margin: 10px 0px;
-                    padding: 0 15px;
-                    border-right: 3px solid white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
+                  .comment-message {
                     font-size: 24px;
                     color: white;
                     font-family: 'Arial Rounded';
-                    @media(max-width: $bp-sm) {
-                      border-right: 0px;
-                    }
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 10px 0px;
+                    padding: 0 15px;
                   }
                 }
-                .comment-message {
-                  font-size: 24px;
-                  color: white;
-                  font-family: 'Arial Rounded';
+                .delete-comment {
+                  background-color: red;
+                  border-radius: 100px;
+                  height: 24px;
+                  width: 24px;
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  margin: 10px 0px;
-                  padding: 0 15px;
+                  color: white;
+                  font-family: 'Arial Rounded';
+                  font-size: 14px;
+                  cursor: pointer;
+                  margin: 0 5px;
                 }
               }
             }
@@ -678,12 +704,14 @@ html, body {
                 height: 50px;
                 .comment-input {
                   position: relative;
-                  top: -7px;
+                  // top: -3px;
                   height: 100%;
                   border-radius: 25px;
                   padding: 10px;
                   border: 1px solid $grey;
                   width: calc(100% - 50px);
+                  font-size: 28px;
+                  resize: none;
                   &:focus {
                     outline: none;
                   }
@@ -772,6 +800,9 @@ html, body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    @media(max-width: $bp-sm) {
+      margin: 10px;
+    }
     .modal-title {
       text-align: center;
       font-size: 28px;
@@ -857,6 +888,21 @@ html, body {
 }
 
 .signup-form {
+  .emails {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 auto 25px;
+    input {
+      margin: 0px 15px 0px 0px;
+      height: auto;
+      position: relative;
+      top: 5px;
+    }
+    span {
+      width: 300px;
+    }
+  }
   .signup-fail {
     text-align: center;
     font-family: 'Arial Rounded';

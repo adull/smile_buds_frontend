@@ -11,6 +11,7 @@ class SignupForm extends Component {
       email: '',
       password: '',
       password_repeat: '',
+      email_notifications: false,
       error: false,
       error_type: '',
       uploading: false
@@ -22,7 +23,12 @@ class SignupForm extends Component {
   }
 
   handleInputChange(event) {
-    this.setState({ [event.target.name]: event.target.value});
+    let target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    if(target.type === 'checkbox') {
+      console.log(value);
+    }
+    this.setState({ [event.target.name]: value});
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -45,7 +51,9 @@ class SignupForm extends Component {
       data.append("hobby", this.state.hobby);
       data.append("email", this.state.email);
       data.append("password", this.state.password);
+      data.append("email_notifications", this.state.email_notifications);
       data.append("image", this.fileInput.current.files[0]);
+      console.log(this.state.email_notifications);
       fetch('/api/signup', {
         credentials: 'include',
         method: 'POST',
@@ -139,6 +147,9 @@ class SignupForm extends Component {
            <label htmlFor="password_repeat">
              Repeat your Password:
              <input name="password_repeat" id="password_repeat" type="password" value={this.state.value} onChange={this.handleInputChange} required/>
+           </label>
+           <label htmlFor="email_notifications" className="emails">
+             <input type="checkbox" name="email_notifications" id="email_notifications" value={this.state.email_notifications} onChange={this.handleInputChange} /><span>Allow SmileBuddies to send you emails letting you know how much your friends love you</span>
            </label>
            { this.state.uploading ? <div className="uploading"></div> : null }
            <SignupFail show={this.state.error} errorType={this.state.error_type} />

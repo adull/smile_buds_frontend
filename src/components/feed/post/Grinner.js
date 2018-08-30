@@ -14,12 +14,12 @@ class Grinner extends Component {
   render() {
     return(
       <div className="grinner">
-        <Link to={"/user/" + this.state.userIdentifier} >
+        <a href={"/user/" + this.state.userIdentifier} >
           <img className="grinner-pic" src={"/api/get-profile-picture/" + this.state.userIdentifier} />
           <div className="grinner-name">
             {this.state.userName}
           </div>
-        </Link>
+        </a>
       </div>
     )
   }

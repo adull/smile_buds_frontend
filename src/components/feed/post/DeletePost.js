@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Delete extends Component {
+class DeletePost extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,4 +47,4 @@ class Delete extends Component {
   }
 }
 
-export default Delete;
+export default DeletePost;
