@@ -10,11 +10,13 @@ class AccountLoggedIn extends Component {
     return(
       <div className="account">
         <div className="account-picture">
-          <ProfilePicture identifier={this.props.identifier} />
+          <a href={"/user/" +this.props.identifier}>
+            <ProfilePicture identifier={this.props.identifier} />
+          </a>
         </div>
         <div className="account-right">
           <div className="account-right-top">
-            <Greeting name={this.props.name}/>
+            <Greeting name={this.props.name} identifier={this.props.identifier}/>
             <Logout logout={this.props.logout}/>
           </div>
           <div className="account-right-bottom">

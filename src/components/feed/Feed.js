@@ -51,6 +51,7 @@ class Feed extends Component {
     })
     .then(function(json) {
       if(json) {
+        console.log(json);
         let newPosts = 0;
         let jsonOriginalPosts = []
         for(var i = 0; i < json.length; i ++) {
@@ -80,7 +81,7 @@ class Feed extends Component {
 
   componentWillReceiveProps(props) {
     let thisObj = this;
-    if(props.newPost !== '') {
+    if(props.newPost !== '' && props.newPost !== undefined) {
       console.log(props.newPost);
       fetch('/api/get-feed-post/' + props.newPost, {
         credentials: 'include'

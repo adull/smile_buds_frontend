@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../modal/Modal.js';
 import Messaging from '../messaging/Messaging.js';
+import EditProfile from './EditProfile.js';
 
 function toTitleCase(str) {
   return str.replace(
@@ -20,19 +21,30 @@ function pad(n, width, z) {
 class UserHeader extends Component {
   constructor(props) {
     super(props);
+    // console.log(props.user);
     this.state = {
+      userID: props.user,
+      userIdentifier: '',
       name: '',
       id: -1,
       love_amount: 0,
       hobby: '',
       hash: '',
-      messengerModalIsOpen: false
+      isMe: false,
+      messengerModalIsOpen: false,
+      editModalIsOpen: false
     }
   }
 
-  toggleModal = () => {
+  toggleMessengerModal = () => {
     this.setState({
       messengerModalIsOpen: !this.state.messengerModalIsOpen
+    });
+  }
+
+  toggleEditModal = () => {
+    this.setState({
+      editModalIsOpen: !this.state.editModalIsOpen
     });
   }
 
@@ -45,19 +57,21 @@ class UserHeader extends Component {
       return response.json();
     })
     .then(function(json) {
-      console.log(json)
+      console.log(json);
       thisObj.setState({
         name: json.first_name,
         id: json.id,
+        userIdentifier: json.identifier,
         love_amount: pad(json.love_amount, 4),
         hobby: json.hobby,
-        hash: thisObj.props.user
+        hash: thisObj.props.user,
+        isMe: json.isMe
       })
     })
   }
 
   render() {
-    console.log(this.props.user);
+    // console.log(this.props.user);
     return(
       <div className="user-header">
         <div className="user-header-item user-header-image">
@@ -72,11 +86,20 @@ class UserHeader extends Component {
         <div className="user-header-item user-header-love">
           <span className="user-header-item-identifier">Loves you</span> <span className="user-header-item-value">{this.state.love_amount}</span> <span className="user-header-item-identifier">much.</span>
         </div>
-        <button onClick={this.toggleModal} className="user-profile-message-btn round-btn">{"Message " + this.state.name}</button>
+        {this.state.isMe ? (
+          <button onClick={this.toggleEditModal} className="user-profile-header-btn round-btn">Edit my profile</button>
+        ) : (
+          <button onClick={this.toggleMessengerModal} className="user-profile-user-profile-header-btn-btn round-btn">{"Message " + this.state.name}</button>
+        )}
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
-               onClose={this.toggleModal}
+               onClose={this.toggleMessengerModal}
                >
             <Messaging mobileView="messages" loggedIn={this.props.loggedIn} messaging={this.state.id}/>
+        </Modal>
+        <Modal className="edit-modal" show={this.state.editModalIsOpen}
+               onClose={this.toggleEditModal}
+               >
+            <EditProfile id={this.state.id} userIdentifier={this.state.identifier} close={this.toggleEditModal}/>
         </Modal>
       </div>
     )

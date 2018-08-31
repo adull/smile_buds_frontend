@@ -25,15 +25,12 @@ class SignupForm extends Component {
   handleInputChange(event) {
     let target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    if(target.type === 'checkbox') {
-      console.log(value);
-    }
     this.setState({ [event.target.name]: value});
   }
+
   handleSubmit(event) {
     event.preventDefault();
     if(!(this.state.password === this.state.password_repeat)) {
-      console.log("SET ERROR TO TRUE");
       this.setState({
         error: true,
         error_type: 'diffPasswords'
@@ -53,11 +50,9 @@ class SignupForm extends Component {
       data.append("password", this.state.password);
       data.append("email_notifications", this.state.email_notifications);
       data.append("image", this.fileInput.current.files[0]);
-      console.log(this.state.email_notifications);
       fetch('/api/signup', {
         credentials: 'include',
         method: 'POST',
-        // body: JSON.stringify({first_name, last_name, hobby, email, password}),
         body: data,
       })
       .then(res => res.json())

@@ -87,6 +87,7 @@ class Post extends Component {
       if(json.length > 0) {
         recentGrin = json[0].user_name;
       }
+      // console.log(json);
       thisObj.setState({
         allGrins: json,
         // recent_grin: json[]

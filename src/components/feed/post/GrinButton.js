@@ -9,7 +9,6 @@ class GrinButton extends Component {
       grinningAt: false,
       modalIsOpen: false
     };
-    // console.log(this);
     this.grinAt = this.grinAt.bind(this);
     this.ungrinAt = this.ungrinAt.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -25,29 +24,30 @@ class GrinButton extends Component {
   componentWillReceiveProps() {
     let thisObj = this;
     let hash = this.props.hash;
-    fetch('/api/did-i-grin-at/' + hash, {
-      credentials: 'include'
-    })
-    .then(res => res.json())
-    .catch(error => console.error('Error: ', error))
-    .then(response => {
-      if(response) {
-        if(response.grinned === true) {
-          this.setState({
-            grinningAt: true
-          })
+    if(hash !== undefined) {
+      fetch('/api/did-i-grin-at/' + hash, {
+        credentials: 'include'
+      })
+      .then(res => res.json())
+      .catch(error => console.error('Error: ', error))
+      .then(response => {
+        if(response) {
+          if(response.grinned === true) {
+            this.setState({
+              grinningAt: true
+            })
+          }
+          else {
+            this.setState({
+              grinningAt: false
+            })
+          }
+          return;
         }
         else {
-          this.setState({
-            grinningAt: false
-          })
         }
-        return;
-      }
-      else {
-      }
-
-    })
+      })
+    }
   }
 
   grinAt() {

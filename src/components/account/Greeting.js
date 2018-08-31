@@ -5,7 +5,7 @@ class Greeting extends Component {
   render() {
     return(
       <div className="greeting-text text-blue-arial">
-        Smile, {this.props.name}
+        Smile, <a href={"/user/" +this.props.identifier}> {this.props.name}</a>
       </div>
     );
   }

@@ -301,8 +301,7 @@ html, body {
     .account-section {
       .account {
         display: flex;
-        // height: 300px;
-        padding: 30px;
+        padding: 30px 30px 0px;
         @media(max-width: $bp-sm) {
           height: auto;
           flex-direction: column;
@@ -350,11 +349,16 @@ html, body {
             .greeting-text {
               font-size: 3.5vw;
               display: flex;
-              flex-direction: column;
+              // flex-direction: column;
+              flex-direction: row;
               justify-content: center;
               @media(max-width: $bp-sm) {
                 margin: 15px 0px;
                 font-size: 24px;
+              }
+              a {
+                color: darken($blue, 20%);
+                margin-left: 3%;
               }
             }
             .top-right {
@@ -445,7 +449,7 @@ html, body {
       }
     }
     .feed-section {
-      // margin-top: 50px;
+      margin-top: 30px;
       display: flex;
       @media(max-width: $bp-sm) {
         flex-direction: column;
@@ -771,7 +775,7 @@ html, body {
           }
         }
       }
-      .user-profile-message-btn {
+      .user-profile-header-btn {
         margin-top: 20px;
       }
     }
@@ -884,6 +888,8 @@ html, body {
   .file-label {
     input {
       border: 0px;
+      margin: 15px auto;
+      width: 170px;
     }
   }
 
@@ -988,6 +994,37 @@ html, body {
         }
       }
     }
+  }
+}
+
+.edit-modal {
+  .edit-modal-title {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid $grey;
+  }
+  .smile-buddies-fieldset {
+    border: 2px solid $grey-blue;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    legend {
+      background-color: $blue;
+      border-radius: 15px;
+      font-size: 18px;
+      color: white;
+      padding: 5px 10px;
+      font-family: "Arial Rounded";
+    }
+    .email-notifications-options {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  .edit-fail {
+    margin: 0px auto 20px;
+    font-size: 18px;
+    font-family: 'Arial Rounded';
+    color: red;
   }
 }
 
