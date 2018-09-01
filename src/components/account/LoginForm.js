@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginFail from './LoginFail.js'
+import LoginFail from './LoginFail.js';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -42,7 +42,6 @@ class LoginForm extends Component {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
-
         if(response.success === false) {
           console.log("response is failure")
           this.loginFailure();
@@ -69,6 +68,7 @@ class LoginForm extends Component {
              Password:
              <input name="password" id="password" type="password" value={this.state.value} onChange={this.handleInputChange} required/>
            </label>
+           <a className="forgot-password" href="/forgot-password">I forgot my password</a>
            <LoginFail show={this.state.loginFail} />
            <div className="submit-options">
             <input className="round-btn" type="submit" value="Log In!" />

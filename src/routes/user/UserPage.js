@@ -23,8 +23,6 @@ class UserPage extends Component {
     })
     .then(function(json) {
       if(json) {
-        console.log(json);
-        console.log(json.signedIn);
         if(json.signedIn === false) {
           thisObj.setState({
             loggedIn: false
@@ -46,7 +44,6 @@ class UserPage extends Component {
   }
 
   render() {
-    console.log(this.state.loggedIn);
     var pathName = this.props.location.pathname;
     var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
     return (

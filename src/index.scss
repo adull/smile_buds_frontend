@@ -296,6 +296,41 @@ html, body {
       }
     }
   }
+  .forgot-password {
+    .forgot-password-body {
+      margin: 0 auto;
+      margin-top: 30px;
+      width: 50%;
+      @media(max-width: $bp-sm) {
+        width: 100%;
+      }
+      .forgot-password-title {
+        font-size: 32px;
+        margin-bottom: 30px;
+      }
+      .smile-buds-form {
+        text-align: center;
+        #email {
+          text-align: center;
+        }
+      }
+      .forgot-password-response {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 18px;
+        font-family: 'Arial Rounded';
+        .forgot-password-failure {
+          color: red;
+        }
+        .forgot-password-success {
+          color: $blue;
+          a {
+            color: darken($blue, 20%);
+          }
+        }
+      }
+    }
+  }
   .body {
     background-color: $off-white;
     .account-section {
@@ -907,6 +942,13 @@ html, body {
 }
 
 .login-form {
+  .forgot-password {
+    text-align: center;
+    font-family: 'Arial Rounded';
+    color: darken($blue, 20%);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
   .login-fail {
     text-align: center;
     font-family: 'Arial Rounded';

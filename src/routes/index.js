@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import HomePage from './home/HomePage';
 import UserPage from './user/UserPage';
 import PostPage from './post/PostPage';
+import ForgotPasswordPage from './forgot-password/ForgotPasswordPage';
 
 import Balloons from '../components/balloons/Balloons.js';
 
@@ -28,6 +29,7 @@ class AppController extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/forgot-password" component={ForgotPasswordPage} />
             <Route path="/user/:userHash" component={UserPage} />
             <Route path="/post/:post" component={PostPage} />
           </Switch>
