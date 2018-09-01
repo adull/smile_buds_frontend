@@ -32,11 +32,11 @@ class CommentNotification extends Notification {
   render() {
     console.log("render comment notification")
     return(
-      <a href={"/post/" + this.state.post} className={"notification " + this.state.type + "-notification"}>
+      <Link to={"/post/" + this.state.post} className={"notification " + this.state.type + "-notification"}>
         <div onClick={this.removeNotification}>
           {this.state.fromName} commented on a post!
         </div>
-      </a>
+      </Link>
     )
   }
 }

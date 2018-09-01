@@ -37,12 +37,12 @@ class MessagingZoneHeader extends Component {
   render() {
     return(
       <div className="messaging-header">
-        <a href={'/user/' + this.state.buddyPicture}>
+        <Link to={'/user/' + this.state.buddyPicture}>
           <img src={'/api/get-profile-picture/' + this.state.buddyPicture} alt={this.state.buddyName}/>
-        </a>
-        <a href={'/user/' + this.state.buddyPicture}>
+        </Link>
+        <Link to={'/user/' + this.state.buddyPicture}>
           <span className="messaging-header-name">{this.state.buddyName}</span>
-        </a>
+        </Link>
       </div>
     )
   }

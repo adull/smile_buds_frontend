@@ -22,7 +22,7 @@ class Comment extends Component {
       return(
         <div className="comment-wrapper">
           <div className="comment">
-            <a href={'/user/' + this.state.metadata.commenter_identifier} >
+            <Link to={'/user/' + this.state.metadata.commenter_identifier} >
               <div className="commenter">
                 <div className="commenter-picture">
                   <img src={"/api/get-profile-picture/" + this.state.metadata.commenter_identifier} />
@@ -31,7 +31,7 @@ class Comment extends Component {
                   {this.state.metadata.commenter_name}
                 </div>
               </div>
-            </a>
+            </Link>
             <div className="comment-message">
               {this.state.metadata.comment}
             </div>

@@ -74,9 +74,9 @@ class Sidebar extends Component {
             <Modal className="modal" show={this.state.aboutIsOpen} onClose={this.toggleAboutModal}>
               <div className="modal-content">
                 <div className="modal-title">
-                  Watch <a href="http://www.adultswim.com/videos/infomercials/dayworld" target="_blank">Dayworld</a> on Adult Swim.
+                  Watch <Link to="http://www.adultswim.com/videos/infomercials/dayworld" target="_blank">Dayworld</Link> on Adult Swim.
                   <br /><br />
-                  Developed by <a href="http://abdelrazaq.com" target="_blank">Adlai Abdelrazaq</a>
+                  Developed by <Link to="http://abdelrazaq.com" target="_blank">Adlai Abdelrazaq</Link>
                 </div>
               </div>
             </Modal>

@@ -4,15 +4,16 @@ import Greeting from './Greeting.js';
 // import Search from './Search.js'
 import Logout from './Logout.js';
 import PostBar from './PostBar.js';
+import {Link} from 'react-router-dom';
 
 class AccountLoggedIn extends Component {
   render() {
     return(
       <div className="account">
         <div className="account-picture">
-          <a href={"/user/" +this.props.identifier}>
+          <Link to={"/user/" +this.props.identifier}>
             <ProfilePicture identifier={this.props.identifier} />
-          </a>
+          </Link>
         </div>
         <div className="account-right">
           <div className="account-right-top">
