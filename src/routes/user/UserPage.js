@@ -23,6 +23,8 @@ class UserPage extends Component {
     })
     .then(function(json) {
       if(json) {
+        console.log(json);
+        console.log(json.signedIn);
         if(json.signedIn === false) {
           thisObj.setState({
             loggedIn: false
