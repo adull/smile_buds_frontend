@@ -31,11 +31,11 @@ class PostNotification extends Notification {
 
   render() {
     return(
-      <Link to={"/post/" + this.state.post} className={"notification " + this.state.type + "-notification"}>
+      <a href={"/post/" + this.state.post} className={"notification " + this.state.type + "-notification"}>
         <div onClick={this.removeNotification}>
           {this.state.fromName} liked your post!
         </div>
-      </Link>
+      </a>
     )
   }
 }

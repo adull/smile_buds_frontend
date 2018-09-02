@@ -26,16 +26,16 @@ class TextPost extends Post {
       <div className="post">
         <div className="post-top">
           <div className="top-img">
-            <Link to={"/user/" + this.state.poster_identifier} >
+            <a href={"/user/" + this.state.poster_identifier} >
               <img src={"/api/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
-            </Link>
+            </a>
           </div>
           <div className="top-text">
-            <Link to={"/user/" + this.state.poster_identifier} >
+            <a href={"/user/" + this.state.poster_identifier} >
               <div className="text-name text-blue-arial">
                 {this.state.poster_name}
               </div>
-            </Link>
+            </a>
             <div className="text-love-val">
               loves you {this.state.love_amount} much
             </div>

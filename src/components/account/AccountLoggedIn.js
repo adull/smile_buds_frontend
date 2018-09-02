@@ -11,9 +11,9 @@ class AccountLoggedIn extends Component {
     return(
       <div className="account">
         <div className="account-picture">
-          <Link to={"/user/" +this.props.identifier}>
+          <a href={"/user/" +this.props.identifier}>
             <ProfilePicture identifier={this.props.identifier} />
-          </Link>
+          </a>
         </div>
         <div className="account-right">
           <div className="account-right-top">

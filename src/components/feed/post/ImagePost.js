@@ -25,17 +25,17 @@ class ImagePost extends Post {
     return(
       <div className="post image-post">
         <div className="post-top">
-          <Link to={"/user/" + this.state.poster_identifier}>
+          <a href={"/user/" + this.state.poster_identifier}>
             <div className="top-img">
               <img src={"/api/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
             </div>
-          </Link>
+          </a>
           <div className="top-text">
-            <Link to={"/user/" + this.state.poster_identifier}>
+            <a href={"/user/" + this.state.poster_identifier}>
               <div className="text-name text-blue-arial">
                 {this.state.poster_name}
               </div>
-            </Link>
+            </a>
             <div className="text-love-val">
               loves you {this.state.love_amount} much
             </div>
