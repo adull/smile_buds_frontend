@@ -89,7 +89,7 @@ class UserHeader extends Component {
         {this.state.isMe ? (
           <button onClick={this.toggleEditModal} className="user-profile-header-btn round-btn">Edit my profile</button>
         ) : (
-          <button onClick={this.toggleMessengerModal} className="user-profile-user-profile-header-btn-btn round-btn">{"Message " + this.state.name}</button>
+          <button onClick={this.toggleMessengerModal} className="user-profile-header-btn round-btn">{"Message " + this.state.name}</button>
         )}
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
                onClose={this.toggleMessengerModal}

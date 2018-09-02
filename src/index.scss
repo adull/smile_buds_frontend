@@ -792,6 +792,10 @@ html, body {
         text-align: center;
         font-size: 48px;
         font-family: 'Arial Rounded';
+        margin-bottom: 15px;
+        @media(max-width: $bp-sm) {
+          font-size: 32px;
+        }
         .user-header-item-identifier {
           color: $grey-blue;
         }
