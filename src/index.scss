@@ -603,6 +603,7 @@ html, body {
               padding: 10px 0px;
               @media(max-width: $bp-sm) {
                 height: auto;
+                overflow: hidden;
               }
               .text-name {
                 margin-top: 10px;
@@ -619,12 +620,18 @@ html, body {
                 font-family: 'Arial Rounded';
                 font-size: 18px;
                 color: $grey-blue;
+                @media(max-width: $bp-sm) {
+                  word-break: break-all;
+                }
               }
               .text-reason {
                 margin-top: 10px;
                 font-family: 'Arial Rounded';
                 font-size: 18px;
                 color: $grey-blue;
+                @media(max-width: $bp-sm) {
+                  word-break: break-all;
+                }
               }
             }
           }
