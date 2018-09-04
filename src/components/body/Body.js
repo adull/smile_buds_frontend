@@ -15,8 +15,8 @@ class Body extends Component {
   }
 
   newPost(hash) {
-    console.log("newpost in high order function")
-    console.log(hash)
+    // console.log("newpost in high order function")
+    // console.log(hash)
     this.setState({
       newPost: hash
     })

@@ -7,7 +7,7 @@ import ImagePost from '../feed/post/ImagePost.js';
 class PostPageBody extends Component {
   constructor(props) {
     super(props);
-    console.log(props.loggedIn)
+    // console.log(props.loggedIn)
     this.state = {
       loggedIn: props.loggedIn,
       postHash: props.postHash,
@@ -43,7 +43,7 @@ class PostPageBody extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props)
+    // console.log(props)
     this.setState({
       loggedIn: props.loggedIn,
       postHash: props.postHash

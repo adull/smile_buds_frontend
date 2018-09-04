@@ -24,7 +24,7 @@ class MessageNotification extends Notification {
 
   removeNotification() {
     let thisObj = this;
-    console.log("clicked on a message notification");
+    // console.log("clicked on a message notification");
     fetch('/api/remove-message-notification/' + this.state.fromID, {
       credentials: 'include'
     })

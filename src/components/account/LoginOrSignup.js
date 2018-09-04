@@ -16,7 +16,7 @@ class LoginOrSignup extends Component {
   }
 
   loggingIn() {
-    console.log("trigger logging in")
+    // console.log("trigger logging in")
     this.setState({
       loggingIn: true,
       signingUp: false,
@@ -25,7 +25,7 @@ class LoginOrSignup extends Component {
   }
 
   signingUp() {
-    console.log("trigger signing up")
+    // console.log("trigger signing up")
     this.setState({
       loggingIn: false,
       signingUp: true,

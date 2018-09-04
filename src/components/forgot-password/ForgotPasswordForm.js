@@ -28,13 +28,13 @@ class ForgotPasswordForm extends Component {
 
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value});
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const {success, failure, email} = this.state;
-    console.log({email});
+    // console.log({email});
     fetch('/api/forgot', {
       credentials: 'include',
       method: 'POST',

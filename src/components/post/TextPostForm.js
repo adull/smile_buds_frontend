@@ -33,9 +33,9 @@ class TextPostForm extends Component {
     .then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(response => {
-      console.log('Success:', response);
+      // console.log('Success:', response);
       if(response.success) {
-        console.log(response);
+        // console.log(response);
         this.setState({
           uploading: false
         })

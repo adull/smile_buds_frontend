@@ -78,7 +78,7 @@ class Feed extends Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.trackScrolling);
-    console.log("this.getPosts();")
+    // console.log("this.getPosts();")
     this.getPosts();
   }
 
@@ -89,27 +89,27 @@ class Feed extends Component {
   componentWillReceiveProps(props) {
     let thisObj = this;
     if(props.newPost !== '' && props.newPost !== undefined) {
-      console.log(props.newPost);
+      // console.log(props.newPost);
       fetch('/api/get-feed-post/' + props.newPost, {
         credentials: 'include'
       })
       .then(function(response) {
-        console.log(response)
+        // console.log(response)
         return response.json();
       })
       .then(function(json) {
-        console.log(json)
+        // console.log(json)
         if(json.error_reason) {
         }
         else {
-          console.log(thisObj.state.postsArr)
+          // console.log(thisObj.state.postsArr)
           let jsonArr = []
           jsonArr.push(json)
           thisObj.setState({
             postsReceived: thisObj.state.postsReceived + json.length,
             postsArr: jsonArr.concat(thisObj.state.postsArr)
           })
-          console.log(thisObj.state.postsArr)
+          // console.log(thisObj.state.postsArr)
         }
       })
     }

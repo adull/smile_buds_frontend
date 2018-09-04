@@ -16,7 +16,7 @@ class CommentNotification extends Notification {
 
   removeNotification() {
     let thisObj = this;
-    console.log("clicked on a comment notification");
+    // console.log("clicked on a comment notification");
     fetch('/api/remove-comment-notification/' + this.state.post, {
       credentials: 'include'
     })
@@ -30,7 +30,7 @@ class CommentNotification extends Notification {
   }
 
   render() {
-    console.log("render comment notification")
+    // console.log("render comment notification")
     return(
       <a href={"/post/" + this.state.post} className={"notification " + this.state.type + "-notification"}>
         <div onClick={this.removeNotification}>

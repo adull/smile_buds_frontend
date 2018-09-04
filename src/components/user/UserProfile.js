@@ -18,7 +18,7 @@ class UserProfile extends Component {
     })
   }
   render() {
-    console.log(this.state.loggedIn);
+    // console.log(this.state.loggedIn);
     return (
       <div className="body">
         <UserHeader loggedIn={this.state.loggedIn} user={this.state.user} />

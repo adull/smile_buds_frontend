@@ -25,7 +25,7 @@ class Balloon extends Component {
   }
 
   hide() {
-    console.log("hide")
+    // console.log("hide")
     this.setState({
       show: false
     })

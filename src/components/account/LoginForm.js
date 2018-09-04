@@ -16,7 +16,7 @@ class LoginForm extends Component {
   }
 
   loginFailure() {
-    console.log("trigger loginfail")
+    // console.log("trigger loginfail")
     this.setState({
       loginFail: true
     })
@@ -43,7 +43,7 @@ class LoginForm extends Component {
       .catch(error => console.error('Error:', error))
       .then(response => {
         if(response.success === false) {
-          console.log("response is failure")
+          // console.log("response is failure")
           this.loginFailure();
         }
         if(response.success) {

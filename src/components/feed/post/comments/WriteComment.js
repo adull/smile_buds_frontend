@@ -28,7 +28,7 @@ class WriteComment extends Component {
   }
 
   handleInputChange(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.setState({
       comment: event.target.value
     })

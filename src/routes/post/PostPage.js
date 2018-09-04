@@ -45,7 +45,7 @@ class PostPage extends Component {
   render() {
     var pathName = this.props.location.pathname;
     var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
-    console.log(userIdentifier);
+    // console.log(userIdentifier);
     return(
       <div>
         <Header loggedIn={this.state.loggedIn}/>
