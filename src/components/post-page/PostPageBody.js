@@ -22,9 +22,9 @@ class PostPageBody extends Component {
     })
     .then(function(response) {
       if(response) {
-        if(response.ok) {
+        // if(response.ok) {
           return response.json();
-        }
+        // }
       }
     })
     .then(function(json) {

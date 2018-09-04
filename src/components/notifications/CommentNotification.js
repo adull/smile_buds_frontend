@@ -23,9 +23,9 @@ class CommentNotification extends Notification {
     .then(res => res.json())
     .catch(error => console.error("error: ", error))
     .then(response => {
-      if(response.ok) {
+      // if(response.ok) {
         thisObj.props.getNotifications;
-      }
+      // }
     })
   }
 

@@ -15,9 +15,9 @@ class ForgotPasswordPage extends Component {
       credentials: 'include'
     })
     .then(function(response) {
-      if(response.ok) {
+      // if(response.ok) {
         return response.json();
-      }
+      // }
     })
     .then(function(json) {
       if(json) {
