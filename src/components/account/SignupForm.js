@@ -119,7 +119,7 @@ class SignupForm extends Component {
              <input name="last_name" id="last_name" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
            </label>
            <label className="file-label" htmlFor="image">
-             Upload a pic of your face! (Hey, no files bigger than 5 MB now!)
+             Upload a pic of your face! (Hey, no files bigger than 1 MB now!)
              <input name="image" id="image" type ="file" accept="image/png, image/jpg, image/jpeg" ref={this.fileInput} required />
            </label>
            <label htmlFor="hobby">

@@ -100,6 +100,7 @@ class Post extends Component {
 
   componentDidMount() {
     let metadata = this.props.metadata;
+    // console.log(metadata.hash);
     this.setState ({
       hash: metadata.hash,
       subject: metadata.subject,

@@ -93,7 +93,7 @@ class EditProfile extends Component {
         </div>
         <form className="smile-buds-form" onSubmit={this.handleSubmit}>
           <label className="file-label" htmlFor="image">
-            Upload a new pic of your face! (Hey, no files bigger than 5 MB now!)
+            Upload a new pic of your face! (Hey, no files bigger than 1 MB now!)
             <input name="image" id="image" type ="file" accept="image/png, image/jpg, image/jpeg" ref={this.fileInput} />
           </label>
           <label htmlFor="hobby">

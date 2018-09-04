@@ -39,12 +39,14 @@ class ImagePost extends Post {
             <div className="text-love-val">
               loves you {this.state.love_amount} much
             </div>
-            <div className="text-subject">
-              Subject: {this.state.subject}
-            </div>
-            <div className="text-reason">
-              Reason for Post: {this.state.reason}
-            </div>
+            <a className="subject-reason-wrapper" href={"/post/" + this.state.hash}>
+              <div className="text-subject">
+                Subject: {this.state.subject}
+              </div>
+              <div className="text-reason">
+                Reason for Post: {this.state.reason}
+              </div>
+            </a>
           </div>
         </div>
         <div className="post-bottom">

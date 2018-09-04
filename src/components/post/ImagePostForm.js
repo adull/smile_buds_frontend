@@ -84,7 +84,7 @@ class ImagePostForm extends Component {
             <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
           </label>
           <label className="file-label" htmlFor="image">
-            Upload a funny picture! (Hey, no files bigger than 5 MB now!)
+            Upload a funny picture! (Hey, no files bigger than 1 MB now!)
             <input name="image" id="image" type ="file" accept="image/png, image/jpg, image/jpeg" ref={this.fileInput} required />
           </label>
           { this.state.uploading ? <div className="uploading"></div> : null }
