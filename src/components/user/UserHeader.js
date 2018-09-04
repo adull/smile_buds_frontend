@@ -32,7 +32,8 @@ class UserHeader extends Component {
       hash: '',
       isMe: false,
       messengerModalIsOpen: false,
-      editModalIsOpen: false
+      editModalIsOpen: false,
+      fakeUser: false
     }
   }
 
@@ -57,7 +58,12 @@ class UserHeader extends Component {
       return response.json();
     })
     .then(function(json) {
-      console.log(json);
+      // console.log(json);
+      if(json.fake_user) {
+        thisObj.setState({
+          fakeUser: true
+        })
+      }
       thisObj.setState({
         name: json.first_name,
         id: json.id,
@@ -72,6 +78,9 @@ class UserHeader extends Component {
 
   render() {
     // console.log(this.props.user);
+    if(this.state.fakeUser === true) {
+      return null;
+    }
     return(
       <div className="user-header">
         <div className="user-header-item user-header-image">

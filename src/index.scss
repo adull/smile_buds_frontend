@@ -1036,9 +1036,12 @@ html, body {
           text-decoration: underline;
         }
         .grinner-pic {
+          background-image: url('./grin-icon.png');
+          background-size: 100px 100px;
           border: 4px solid $grey-blue;
           border-radius: 100px;
           height: 100px;
+          width: 100px;
         }
         .grinner-name {
           color: $blue;

@@ -8,7 +8,8 @@ class Feed extends Component {
     this.state = {
       postsReceived: 0,
       postsArr: [],
-      loading: false
+      loading: false,
+      fakeFeed: false
     }
     this.isBottom = this.isBottom.bind(this);
     this.getPosts = this.getPosts.bind(this);
@@ -51,7 +52,13 @@ class Feed extends Component {
     })
     .then(function(json) {
       if(json) {
-        console.log(json);
+        // console.log(json);
+        if(json.fake_feed === true) {
+          thisObj.setState({
+            fakeFeed: true
+          })
+          return;
+        }
         let newPosts = 0;
         let jsonOriginalPosts = []
         for(var i = 0; i < json.length; i ++) {
@@ -119,6 +126,9 @@ class Feed extends Component {
 
 
   render() {
+    if(this.state.fakeFeed === true) {
+      return null;
+    }
     var elements = [];
     let postsArr = this.state.postsArr;
     for (var i = 0; i < postsArr.length; i++) {
