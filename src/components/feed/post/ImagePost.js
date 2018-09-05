@@ -32,11 +32,11 @@ class ImagePost extends Post {
     return(
       <div className="post image-post">
         <div className="post-top">
-          <a href={"/user/" + this.state.poster_identifier}>
-            <div className="top-img">
+          <div className="top-img">
+            <a href={"/user/" + this.state.poster_identifier}>
               <img src={"/api/get-profile-picture/" + (this.state.poster_identifier || 'a')} alt={this.state.poster_name} />
-            </div>
-          </a>
+            </a>
+          </div>
           <div className="top-text">
             <a href={"/user/" + this.state.poster_identifier}>
               <div className="text-name text-blue-arial">

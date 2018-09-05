@@ -43,7 +43,7 @@ class ComposeMessage extends Component {
     return(
       <form className="send-message-form" onSubmit={this.handleSubmit}>
         <input className="send-message-form-input" ref="messageInput" name="message" id="message" type="text" value={this.state.value} onChange={this.handleInputChange} placeholder={"Send a message to your buddy!"} autoComplete="off" required />
-        <input className="round-btn" type="submit" value="↝" />
+        <input className="round-btn send-btn" type="submit" value="↝" />
       </form>
     )
   }

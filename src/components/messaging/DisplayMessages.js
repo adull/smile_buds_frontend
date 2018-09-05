@@ -43,9 +43,6 @@ class DisplayMessages extends Component {
 
   componentDidMount() {
     this.getMessages(this.props.messaging);
-    this.interval = setInterval(() => {
-      this.getMessages(this.props.messaging)
-    }, 5000);
   }
 
   render() {
