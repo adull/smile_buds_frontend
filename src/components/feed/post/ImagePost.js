@@ -18,6 +18,13 @@ class ImagePost extends Post {
       deleteContent: true
     })
   }
+
+  // componentWillMount() {
+  //   this.setState({
+  //     poster_identifier: ''
+  //   })
+  // }
+
   render() {
     if(this.state.deleteContent === true) {
       return null;
@@ -27,7 +34,7 @@ class ImagePost extends Post {
         <div className="post-top">
           <a href={"/user/" + this.state.poster_identifier}>
             <div className="top-img">
-              <img src={"/api/get-profile-picture/" + this.state.poster_identifier} alt={this.state.poster_name} />
+              <img src={"/api/get-profile-picture/" + (this.state.poster_identifier || 'a')} alt={this.state.poster_name} />
             </div>
           </a>
           <div className="top-text">

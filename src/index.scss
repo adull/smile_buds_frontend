@@ -634,18 +634,14 @@ html, body {
                   font-family: 'Arial Rounded';
                   font-size: 18px;
                   color: $grey-blue;
-                  @media(max-width: $bp-sm) {
-                    word-break: break-all;
-                  }
+                  word-break: break-word;
                 }
                 .text-reason {
                   margin-top: 10px;
                   font-family: 'Arial Rounded';
                   font-size: 18px;
                   color: $grey-blue;
-                  @media(max-width: $bp-sm) {
-                    word-break: break-all;
-                  }
+                  word-break: break-word;
                 }
               }
             }
@@ -698,6 +694,9 @@ html, body {
               color: $blue;
               font-family: 'Comic Sans';
               cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
           .comment-section {

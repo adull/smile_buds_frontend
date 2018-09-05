@@ -25,7 +25,7 @@ class Comment extends Component {
             <a href={'/user/' + this.state.metadata.commenter_identifier} >
               <div className="commenter">
                 <div className="commenter-picture">
-                  <img src={"/api/get-profile-picture/" + this.state.metadata.commenter_identifier} />
+                  <img src={"/api/get-profile-picture/" + (this.state.metadata.commenter_identifier || 'a')} />
                 </div>
                 <div className="commenter-name">
                   {this.state.metadata.commenter_name}

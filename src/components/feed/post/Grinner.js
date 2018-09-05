@@ -15,7 +15,7 @@ class Grinner extends Component {
     return(
       <div className="grinner">
         <a href={"/user/" + this.state.userIdentifier} >
-          <img className="grinner-pic" src={"/api/get-profile-picture/" + this.state.userIdentifier} />
+          <img className="grinner-pic" src={"/api/get-profile-picture/" + (this.state.userIdentifier || 'a')} />
           <div className="grinner-name">
             {this.state.userName}
           </div>
