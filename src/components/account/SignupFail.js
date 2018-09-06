@@ -28,6 +28,12 @@ class SignupFail extends Component {
         errorMessage: message
       })
     }
+    if(errorType === "invalidHobby") {
+      var message = "Hobby is invalid";
+      this.setState({
+        errorMessage: message
+      })
+    }
     else if(errorType === "fileSize") {
       var message = "File is too big!";
       this.setState({

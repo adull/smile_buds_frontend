@@ -28,6 +28,14 @@ class EditProfile extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    let hobbyOptions = ['Dancing', 'Singing', 'Hang out with friends', 'Chatting']
+    if(hobbyOptions.includes(this.state.hobby) === false) {
+      this.setState({
+        error: true,
+        error_type: 'invalidHobby'
+      })
+      return;
+    }
     if(!(this.state.password === this.state.password_repeat)) {
       this.setState({
         error: true,

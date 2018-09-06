@@ -22,6 +22,12 @@ class EditProfileFail extends Component {
   }
 
   createErrorMessage(errorType) {
+    if(errorType === "invalidHobby") {
+      var message = "Invalid Hobby";
+      this.setState({
+        errorMessage: message
+      })
+    }
     if(errorType === "diffPasswords") {
       var message = "Passwords do not match";
       this.setState({

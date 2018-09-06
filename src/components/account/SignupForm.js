@@ -31,6 +31,15 @@ class SignupForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // console.log(this.state.hobby);
+    let hobbyOptions = ['Dancing', 'Singing', 'Hang out with friends', 'Chatting']
+    if(hobbyOptions.includes(this.state.hobby) === false) {
+      this.setState({
+        error: true,
+        error_type: 'invalidHobby'
+      })
+      return;
+    }
     if(this.state.age_minimum === false) {
       this.setState({
         error: true,
