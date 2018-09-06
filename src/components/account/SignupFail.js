@@ -40,6 +40,12 @@ class SignupFail extends Component {
         errorMessage: message
       })
     }
+    else if(errorType === "ageMinimum") {
+      var message = "You must be at least 13 years old to use SmileBuddies!";
+      this.setState({
+        errorMessage: message
+      })
+    }
     else {
       var message = "An error occured! Try again";
       this.setState({

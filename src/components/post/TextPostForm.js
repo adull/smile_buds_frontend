@@ -51,15 +51,15 @@ class TextPostForm extends Component {
         <form className="smile-buds-form" onSubmit={this.handleSubmit}>
           <label htmlFor="subject">
             Subject:
-            <input name="subject" id="subject" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
+            <input name="subject" id="subject" type="text" value={this.state.value} onChange={this.handleInputChange} maxlength="255" required/>
           </label>
           <label htmlFor="message">
             Status Message:
-            <textarea name="message" id="message" value={this.state.value} onChange={this.handleInputChange} required/>
+            <textarea name="message" id="message" value={this.state.value} onChange={this.handleInputChange} maxlength="1000" required/>
           </label>
           <label htmlFor="reason">
             Reason for Post:
-            <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
+            <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} maxlength="255" required/>
           </label>
           { this.state.uploading ? <div className="uploading"></div> : null }
           <div className="submit-options">

@@ -12,6 +12,7 @@ class SignupForm extends Component {
       password: '',
       password_repeat: '',
       email_notifications: false,
+      age_minimum: false,
       error: false,
       error_type: '',
       uploading: false
@@ -30,6 +31,13 @@ class SignupForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    if(this.state.age_minimum === false) {
+      this.setState({
+        error: true,
+        error_type: 'ageMinimum'
+      })
+      return;
+    }
     if(!(this.state.password === this.state.password_repeat)) {
       this.setState({
         error: true,
@@ -37,6 +45,14 @@ class SignupForm extends Component {
       })
       return;
     }
+
+    // if(!(this.state.password === this.state.password_repeat)) {
+    //   this.setState({
+    //     error: true,
+    //     error_type: 'diffPasswords'
+    //   })
+    //   return;
+    // }
     else {
       this.setState({
         uploading: true
@@ -143,9 +159,13 @@ class SignupForm extends Component {
              Repeat your Password:
              <input name="password_repeat" id="password_repeat" type="password" value={this.state.value} onChange={this.handleInputChange} required/>
            </label>
-           <label htmlFor="email_notifications" className="emails">
+           <label htmlFor="email_notifications" className="checkbox">
              <input type="checkbox" name="email_notifications" id="email_notifications" value={this.state.email_notifications} onChange={this.handleInputChange} /><span>Allow SmileBuddies to send you emails letting you know how much your friends love you</span>
            </label>
+           <label htmlFor="age_minimum" className="checkbox">
+             <input type="checkbox" name="age_minimum" id="age_minimum" value={this.state.age_minimum} onChange={this.handleInputChange}/><span>I am 13 years of age or older</span>
+           </label>
+
            { this.state.uploading ? <div className="uploading"></div> : null }
            <SignupFail show={this.state.error} errorType={this.state.error_type} />
            <div className="submit-options">
