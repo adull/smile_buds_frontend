@@ -6,7 +6,7 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       userID: props.id,
-      userIdentifier: props.identifier,
+      userIdentifier: props.userIdentifier,
       hobby: '',
       password: '',
       password_repeat: '',
@@ -28,13 +28,16 @@ class EditProfile extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     let hobbyOptions = ['Dancing', 'Singing', 'Hang out with friends', 'Chatting']
-    if(hobbyOptions.includes(this.state.hobby) === false) {
-      this.setState({
-        error: true,
-        error_type: 'invalidHobby'
-      })
-      return;
+    if(this.state.hobby !== '') {
+      if(hobbyOptions.includes(this.state.hobby) === false) {
+        this.setState({
+          error: true,
+          error_type: 'invalidHobby'
+        })
+        return;
+      }
     }
     if(!(this.state.password === this.state.password_repeat)) {
       this.setState({

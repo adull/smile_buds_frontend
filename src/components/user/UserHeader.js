@@ -21,7 +21,7 @@ function pad(n, width, z) {
 class UserHeader extends Component {
   constructor(props) {
     super(props);
-    // console.log(props.user);
+    console.log(props);
     this.state = {
       userID: props.user,
       userIdentifier: '',
@@ -31,10 +31,15 @@ class UserHeader extends Component {
       hobby: '',
       hash: '',
       isMe: false,
+      isAdmin: props.isAdmin,
       messengerModalIsOpen: false,
       editModalIsOpen: false,
+      deleteModalIsOpen: false,
       fakeUser: false
     }
+    this.deleteUser = this.deleteUser.bind(this);
+    console.log(this.deleteUser)
+    // console.log(this)
   }
 
   toggleMessengerModal = () => {
@@ -47,6 +52,29 @@ class UserHeader extends Component {
     this.setState({
       editModalIsOpen: !this.state.editModalIsOpen
     });
+  }
+
+  toggleDeleteModal = () => {
+    this.setState({
+      deleteModalIsOpen: !this.state.deleteModalIsOpen
+    });
+  }
+
+  deleteUser() {
+    fetch('/api/delete-account/' + this.state.userIdentifier, {
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => {
+      console.log('/delete-account/' + this.state.userIdentifier);
+      if(response.success === true) {
+        console.log("booya")
+        this.setState({
+          fakeUser: true
+        })
+      }
+    })
   }
 
   componentWillMount() {
@@ -76,8 +104,14 @@ class UserHeader extends Component {
     })
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({
+      isAdmin: props.isAdmin
+    })
+  }
+
   render() {
-    // console.log(this.props.user);
+    console.log(this.state.isAdmin);
     if(this.state.fakeUser === true) {
       return null;
     }
@@ -95,11 +129,18 @@ class UserHeader extends Component {
         <div className="user-header-item user-header-love">
           <span className="user-header-item-identifier">Loves you</span> <span className="user-header-item-value">{this.state.love_amount}</span> <span className="user-header-item-identifier">much.</span>
         </div>
-        {this.state.isMe ? (
-          <button onClick={this.toggleEditModal} className="user-profile-header-btn round-btn">Edit my profile</button>
-        ) : (
-          <button onClick={this.toggleMessengerModal} className="user-profile-header-btn round-btn">{"Message " + this.state.name}</button>
-        )}
+        <div className="user-header-button-section">
+          {this.state.isMe ? (
+            <button onClick={this.toggleEditModal} className="user-profile-header-btn round-btn">Edit my profile</button>
+          ) : (
+            <button onClick={this.toggleMessengerModal} className="user-profile-header-btn round-btn">{"Message " + this.state.name}</button>
+          )}
+          {this.state.isAdmin ? (
+            <button onClick={this.toggleDeleteModal} className="user-profile-header-btn delete-btn">Delete This Profile</button>
+          ) : (
+            null
+          )}
+        </div>
         <Modal className="messaging-modal" show={this.state.messengerModalIsOpen}
                onClose={this.toggleMessengerModal}
                >
@@ -108,7 +149,12 @@ class UserHeader extends Component {
         <Modal className="edit-modal" show={this.state.editModalIsOpen}
                onClose={this.toggleEditModal}
                >
-            <EditProfile id={this.state.id} userIdentifier={this.state.identifier} close={this.toggleEditModal}/>
+            <EditProfile id={this.state.id} userIdentifier={this.state.userIdentifier} close={this.toggleEditModal}/>
+        </Modal>
+        <Modal className="delete-modal" show={this.state.deleteModalIsOpen}
+               onClose={this.toggleDeleteModal}
+               >
+            <button onClick={this.deleteUser} className="delete-btn">Delete user</button>
         </Modal>
       </div>
     )

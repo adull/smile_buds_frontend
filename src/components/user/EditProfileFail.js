@@ -28,7 +28,7 @@ class EditProfileFail extends Component {
         errorMessage: message
       })
     }
-    if(errorType === "diffPasswords") {
+    else if(errorType === "diffPasswords") {
       var message = "Passwords do not match";
       this.setState({
         errorMessage: message

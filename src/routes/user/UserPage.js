@@ -8,6 +8,7 @@ class UserPage extends Component {
     super();
     this.state = {
       balloonAmt: 0,
+      me: '',
       loggedIn: false
     }
     this.addBalloon = this.addBalloon.bind(this);
@@ -23,6 +24,7 @@ class UserPage extends Component {
     })
     .then(function(json) {
       if(json) {
+        console.log(json);
         if(json.signedIn === false) {
           thisObj.setState({
             loggedIn: false
@@ -30,6 +32,7 @@ class UserPage extends Component {
         }
         else {
           thisObj.setState({
+            isAdmin: (json.type === 'admin'),
             loggedIn: true
           })
         }
@@ -49,7 +52,7 @@ class UserPage extends Component {
     return (
       <div>
         <Header loggedIn={this.state.loggedIn}/>
-        <UserProfile addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} user={userIdentifier}/>
+        <UserProfile addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} user={userIdentifier} isAdmin={this.state.isAdmin}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>
     );

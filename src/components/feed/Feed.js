@@ -38,6 +38,7 @@ class Feed extends Component {
 
 
   getPosts() {
+    // console.log(this.state.getPostsArr);
     this.setState({
       loading: true
     })

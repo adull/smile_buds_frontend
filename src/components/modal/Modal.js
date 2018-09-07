@@ -6,8 +6,8 @@ class Modal extends Component {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
   }
+
   render() {
-    // Render nothing if the "show" prop is false
     if(!this.props.show) {
       return null;
     }
