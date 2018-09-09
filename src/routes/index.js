@@ -32,7 +32,6 @@ class AppController extends React.Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/user/:userHash" component={UserPage} />
             <Route path="/post/:post" component={PostPage} />
-            <Route path="/biggest-grins/:sortBy" component={BiggestGrinsPage} />
             <Route exact path="/forgot-password" component={ForgotPasswordPage} />
           </Switch>
         </BrowserRouter>

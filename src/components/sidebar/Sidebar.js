@@ -45,14 +45,6 @@ class Sidebar extends Component {
               Smile Feed
             </div>
           </a>
-          <a href="/biggest-grins/day" className="sidebar-option">
-            <div className="option-image">
-              <img src={ require('./paw.png') } alt="Paw" />
-            </div>
-            <div className="option-title">
-              Biggest Grins
-            </div>
-          </a>
           <div onClick={this.toggleMessengerModal} className="sidebar-option">
             <div className="option-image">
               <img src={ require('./chat.png') } alt="Chat" />
