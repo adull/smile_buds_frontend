@@ -12,6 +12,7 @@ class BiggestGrins extends Component {
       sortBy: props.sortBy,
       posts: []
     }
+    this.changeSortBy = this.changeSortBy.bind(this);
   }
 
   componentWillMount() {
@@ -34,8 +35,26 @@ class BiggestGrins extends Component {
   }
 
   changeSortBy(sortBy) {
+    console.log("change sort by");
+    console.log(sortBy)
+    let thisObj = this;
     this.setState({
       sortBy: sortBy
+    })
+    fetch('/api/get-biggest-grins/' + thisObj.state.sortBy, {
+      credentials: 'include'
+    })
+    .then(function(response) {
+      return response.json()
+    })
+    .then(function(json) {
+      if(json) {
+        console.log(json);
+        thisObj.setState({
+          loading: false,
+          posts: json
+        })
+      }
     })
   }
 
@@ -48,6 +67,7 @@ class BiggestGrins extends Component {
       )
     }
     else {
+      console.log("re render dis!")
       return(
         <div className="body">
           <BiggestGrinsHeader sortBy={this.state.sortBy} changeSortBy={this.changeSortBy} />

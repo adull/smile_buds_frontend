@@ -47,6 +47,15 @@ class BiggestGrinsFeed extends Component {
   	};
   };
 
+  clearPosts() {
+    this.setState({
+      postsSeen: 0,
+      allPostHashes: this.props.posts,
+      postsLoaded: [],
+      sortBy: this.props.sortBy
+    })
+  }
+
   getPosts() {
     console.log("call get posts")
     let hashesToRequest = [];
@@ -108,7 +117,8 @@ class BiggestGrinsFeed extends Component {
 
   componentWillReceiveProps(props) {
     console.log("receive props")
-    // this.getPosts();
+    this.clearPosts();
+    this.getPosts();
   }
 
   render() {

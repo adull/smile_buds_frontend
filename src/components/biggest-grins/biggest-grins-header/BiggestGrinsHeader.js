@@ -11,11 +11,15 @@ class BiggestGrinsHeader extends Component {
   }
 
   sortByOnClick(value) {
+    // console.log("fire this")
+    console.log(value)
     let possibleValues = ['day', 'week', 'month', 'year'];
     if (!possibleValues.includes(value)) {
+      console.log("yea")
       return;
     }
     else {
+      console.log("change sort by")
       this.props.changeSortBy(value);
     }
   }
