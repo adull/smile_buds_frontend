@@ -79,7 +79,6 @@ class Feed extends Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.trackScrolling);
-    // console.log("this.getPosts();")
     this.getPosts();
   }
 

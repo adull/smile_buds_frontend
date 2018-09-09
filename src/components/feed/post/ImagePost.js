@@ -58,7 +58,7 @@ class ImagePost extends Post {
         </div>
         <div className="post-bottom">
           <div className="post-image">
-            <img src={ "/api/get-image-from-post/" + this.state.hash } alt="maggie-post"  />
+            <img src={ "/api/get-image-from-post/" + this.state.hash } alt={this.state.poster_name + "'s Image"}  />
           </div>
           <div className="post-content text-blue-arial">
             {this.state.message}
