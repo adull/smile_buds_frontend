@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import HomePage from './home/HomePage';
 import UserPage from './user/UserPage';
 import PostPage from './post/PostPage';
-import BiggestGrinsPage from './biggest-grins/BiggestGrinsPage';
 import ForgotPasswordPage from './forgot-password/ForgotPasswordPage';
 
 import Balloons from '../components/balloons/Balloons.js';

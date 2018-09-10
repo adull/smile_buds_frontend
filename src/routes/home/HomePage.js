@@ -21,9 +21,7 @@ class HomePage extends Component {
       credentials: 'include'
     })
     .then(function(response) {
-      // if(response.ok) {
-        return response.json();
-      // }
+      return response.json();
     })
     .then(function(json) {
       if(json) {

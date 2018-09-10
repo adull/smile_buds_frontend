@@ -73,15 +73,15 @@ class ImagePostForm extends Component {
         <form className="smile-buds-form" onSubmit={this.handleSubmit} encType="multipart/formdata">
           <label htmlFor="subject">
             Subject:
-            <input name="subject" id="subject" type="text" value={this.state.value} onChange={this.handleInputChange} maxlength="255" required/>
+            <input name="subject" id="subject" type="text" value={this.state.value} onChange={this.handleInputChange} maxLength="255" autoComplete="off" required/>
           </label>
           <label htmlFor="message">
             Status Message:
-            <textarea name="message" id="message" value={this.state.value} onChange={this.handleInputChange} maxlength="1000" required/>
+            <textarea name="message" id="message" value={this.state.value} onChange={this.handleInputChange} maxLength="1000" autoComplete="off" required/>
           </label>
           <label htmlFor="reason">
             Reason for Post:
-            <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} maxlength="255" required/>
+            <input name="reason" id="reason" type="text" value={this.state.value} onChange={this.handleInputChange} maxLength="255" required/>
           </label>
           <label className="file-label" htmlFor="image">
             Upload a funny picture! (Hey, no files bigger than 1 MB now!)

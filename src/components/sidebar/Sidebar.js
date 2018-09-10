@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-
+import Search from '../search/Search.js';
 import Modal from '../modal/Modal.js';
 import Messaging from '../messaging/Messaging.js';
 
@@ -11,6 +11,7 @@ class Sidebar extends Component {
     this.state = {
       messengerIsOpen: false,
       aboutIsOpen: false,
+      searchIsOpen: false,
       loggedIn: props.loggedIn
     };
   }
@@ -25,6 +26,12 @@ class Sidebar extends Component {
     this.setState({
       messengerIsOpen: !this.state.messengerIsOpen
     });
+  }
+
+  toggleSearchModal = () => {
+    this.setState({
+      searchIsOpen: !this.state.searchIsOpen
+    })
   }
 
   componentWillReceiveProps(props) {
@@ -45,6 +52,17 @@ class Sidebar extends Component {
               Smile Feed
             </div>
           </a>
+          <div onClick={this.toggleSearchModal} className="sidebar-option">
+            <div className="option-image">
+              <img src={ require('./paw.png') } alt="Paw" />
+            </div>
+            <div className="option-title">
+              Search Users
+            </div>
+            <Modal className="search-modal" show={this.state.searchIsOpen} onClose={this.toggleSearchModal}>
+              <Search />
+            </Modal>
+          </div>
           <div onClick={this.toggleMessengerModal} className="sidebar-option">
             <div className="option-image">
               <img src={ require('./chat.png') } alt="Chat" />
