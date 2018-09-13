@@ -21,7 +21,6 @@ function pad(n, width, z) {
 class UserHeader extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       userID: props.user,
       userIdentifier: '',
@@ -38,8 +37,6 @@ class UserHeader extends Component {
       fakeUser: false
     }
     this.deleteUser = this.deleteUser.bind(this);
-    console.log(this.deleteUser)
-    // console.log(this)
   }
 
   toggleMessengerModal = () => {
@@ -67,9 +64,7 @@ class UserHeader extends Component {
     .then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(response => {
-      console.log('/delete-account/' + this.state.userIdentifier);
       if(response.success === true) {
-        console.log("booya")
         this.setState({
           fakeUser: true
         })

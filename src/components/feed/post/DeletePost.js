@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Modal from '../../modal/Modal.js';
 
 class DeletePost extends Component {
   constructor(props) {
@@ -9,18 +10,23 @@ class DeletePost extends Component {
     }
 
     this.onDelete = this.onDelete.bind(this);
-    // this.fuckMe = this.fuckMe.bind(this);
+  }
+
+  toggleDeleteModal = () => {
+    this.setState({
+      deleteModalIsOpen: !this.state.deleteModalIsOpen
+    });
   }
 
   componentWillReceiveProps(props) {
     this.setState({
+      deleteModalIsOpen: false,
       show: props.show,
       hash: props.hash
     })
   }
 
   onDelete() {
-    console.log("boutta fetch")
     let thisObj = this;
     fetch('/api/delete-post/' + this.state.hash, {
       credentials: 'include'
@@ -36,9 +42,17 @@ class DeletePost extends Component {
   render() {
     if(this.state.show) {
       return(
-        <button onClick={this.onDelete} className="delete-btn">
-          Delete Post
-        </button>
+        <div className="delete-btn-wrapper">
+          <button onClick={this.toggleDeleteModal} className="delete-btn">
+            Delete Post
+          </button>
+          <Modal className="delete-modal" show={this.state.deleteModalIsOpen}
+                 onClose={this.toggleDeleteModal}
+                 >
+              <button onClick={this.onDelete} className="delete-btn">Delete post</button>
+          </Modal>
+        </div>
+
       )
     }
     else{
