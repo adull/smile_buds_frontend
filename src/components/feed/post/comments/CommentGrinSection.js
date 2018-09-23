@@ -15,13 +15,11 @@ class CommentGrinSection extends Component {
     }
     this.toggleGrinModal = this.toggleGrinModal.bind(this);
     this.setGrins = this.setGrins.bind(this);
-    this.increaseGrins = this.increaseGrins.bind(this)
-    this.decreaseGrins = this.decreaseGrins.bind(this)
   }
 
-  setGrins() {
-    let commentID = this.state.commentID;
-    let grins = this.state.grins;
+  setGrins(commentID, grins) {
+    // let commentID = this.state.commentID;
+    // let grins = this.state.grins;
     let grinCount = 0;
     let grinList = [];
     let didIGrin = false;
@@ -42,7 +40,7 @@ class CommentGrinSection extends Component {
   }
 
   componentWillMount() {
-    this.setGrins();
+    this.setGrins(this.state.commentID, this.state.grins);
   }
 
   toggleGrinModal = () => {
@@ -51,22 +49,14 @@ class CommentGrinSection extends Component {
     });
   }
 
-  decreaseGrins() {
-    this.setState({
-      numGrins: this.state.numGrins - 1
-    })
-  }
-
-  increaseGrins() {
-    this.setState({
-      numGrins: this.state.numGrins + 1
-    })
+  componentWillReceiveProps(props) {
+    this.setGrins(this.state.commentID, props.grins)
   }
 
   render() {
     return (
       <div className="comment-grin-section">
-        <CommentGrin ungrinAt={this.decreaseGrins} grinAt={this.increaseGrins} commentID={this.state.commentID} didIGrin={this.state.didIGrin}/>
+        <CommentGrin grinClick={this.props.refresh} commentID={this.state.commentID} didIGrin={this.state.didIGrin}/>
         <CommentGrinCount numGrins={this.state.numGrins} grinList={this.state.grinsForThisComment}/>
       </div>
     )

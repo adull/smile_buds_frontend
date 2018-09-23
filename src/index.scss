@@ -785,13 +785,29 @@ html, body {
                 .comment-grin-section {
                   position: relative;
                   .grinning {
+                    cursor: pointer;
+                    &:hover {
+                      .face-color {
+                        // fill: darken(#FCFC77, 30%);
+                        fill: #fef214;
+                      }
+                    }
                     .face-color {
+                      transition: 1s all;
                       fill: #FCFC77;
+
                     }
                   }
                   .not-grinning {
+                    cursor: pointer;
+                    &:hover {
+                      .face-color {
+                        fill: #fef214
+                      }
+                    }
                     .face-color {
-                      fill: none;
+                      transition: 1s all;
+                      fill: white;
                     }
                   }
                   .comment-grin {
@@ -806,6 +822,7 @@ html, body {
                     width: 100%;
                     text-align: center;
                     color: $blue;
+                    font-family: 'Arial Rounded';
                     &:hover {
                       text-decoration: underline;
                       cursor: pointer;

@@ -35,7 +35,6 @@ class Comments extends Component {
 
   getComments() {
     let thisObj = this;
-    // console.log("query - " + this.state.hash)
     fetch('/api/get-comments/' + this.state.hash, {
       credentials: 'include'
     })
@@ -45,9 +44,7 @@ class Comments extends Component {
       }
     })
     .then(function(json) {
-      // console.log(json);
       if(json) {
-        console.log(json.commentGrins);
         thisObj.setState({
           comments: json.commentResults,
           commentGrins: json.commentGrins

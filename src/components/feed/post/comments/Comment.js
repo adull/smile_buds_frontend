@@ -21,11 +21,12 @@ class Comment extends Component {
   }
 
   componentWillReceiveProps(props) {
-    grins: props.grins
+    this.setState({
+      grins: props.grins
+    })
   }
 
   render() {
-    console.log(this.state.grins);
     if(this.state.show) {
       return(
         <div className="comment-wrapper">
