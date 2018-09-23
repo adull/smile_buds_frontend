@@ -106,7 +106,6 @@ class UserHeader extends Component {
   }
 
   render() {
-    console.log(this.state.isAdmin);
     if(this.state.fakeUser === true) {
       return null;
     }

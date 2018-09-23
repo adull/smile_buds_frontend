@@ -6,7 +6,8 @@ class Comments extends Component {
     super(props);
     this.state = {
       hash: props.hash,
-      comments: []
+      comments: [],
+      commentGrins: []
     }
     this.getComments = this.getComments.bind(this);
   }
@@ -34,6 +35,7 @@ class Comments extends Component {
 
   getComments() {
     let thisObj = this;
+    // console.log("query - " + this.state.hash)
     fetch('/api/get-comments/' + this.state.hash, {
       credentials: 'include'
     })
@@ -43,20 +45,24 @@ class Comments extends Component {
       }
     })
     .then(function(json) {
-      if(json.length > 0) {
+      // console.log(json);
+      if(json) {
+        console.log(json.commentGrins);
         thisObj.setState({
-          comments: json
+          comments: json.commentResults,
+          commentGrins: json.commentGrins
         })
       }
     })
   }
 
   render() {
-    let comments = this.state.comments
+    let comments = this.state.comments;
+    let commentGrins = this.state.commentGrins;
     let commentsArr = [];
     for(let i = 0; i < comments.length; i ++ ) {
       commentsArr.push(
-        <Comment key={i} metadata={comments[i]} />
+        <Comment key={i} metadata={comments[i]} grins={commentGrins} refresh={this.getComments} />
       )
     }
     return(

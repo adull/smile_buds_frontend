@@ -782,6 +782,36 @@ html, body {
                     }
                   }
                 }
+                .comment-grin-section {
+                  position: relative;
+                  .grinning {
+                    .face-color {
+                      fill: #FCFC77;
+                    }
+                  }
+                  .not-grinning {
+                    .face-color {
+                      fill: none;
+                    }
+                  }
+                  .comment-grin {
+                    .svg-smile {
+                      height: 35px;
+                      width: 35px;
+
+                    }
+                  }
+                  .comment-grin-count {
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    color: $blue;
+                    &:hover {
+                      text-decoration: underline;
+                      cursor: pointer;
+                    }
+                  }
+                }
                 .delete-comment {
                   background-color: red;
                   border-radius: 100px;
@@ -1035,7 +1065,7 @@ html, body {
 
 .uploading {
   border: 16px solid #f3f3f3;
-  border-top: 16px solid #84a4cb;
+  border-top: 16px solid $blue;
   border-radius: 50%;
   width: 64px;
   height: 64px;

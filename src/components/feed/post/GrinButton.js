@@ -53,7 +53,7 @@ class GrinButton extends Component {
   grinAt() {
     let thisObj = this;
     let hash = this.props.hash;
-    fetch('/api/grin-at/' + hash, {
+    fetch('/api/grin-at-post/' + hash, {
       credentials: 'include',
       method: 'POST'
     })
@@ -85,7 +85,7 @@ class GrinButton extends Component {
     let thisObj = this;
 
     let hash = this.props.hash;
-    fetch('/api/ungrin-at/' + hash, {
+    fetch('/api/ungrin-at-post/' + hash, {
       credentials: 'include',
       method: 'POST'
     })

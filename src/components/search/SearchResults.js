@@ -14,7 +14,6 @@ class SearchResults extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props);
     this.setState({
       query: props.searchQuery,
       querySent: true,
@@ -23,14 +22,12 @@ class SearchResults extends Component {
   }
 
   render() {
-    console.log("re render!")
     let elements = [];
     for(var i = 0; i < this.state.searchResults.length; i ++) {
       elements.push(
         <SearchResult key={i} data={this.state.searchResults[i]} />
       )
     }
-    console.log(elements);
     return(
       <div className="search-results">
         <div className="search-results-header">
