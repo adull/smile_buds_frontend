@@ -16,11 +16,17 @@ class Balloon extends Component {
   }
 
   componentDidMount() {
+    // var left = Math.random() * 51;
+    // console.log(left)
     this.setState({
       styles: {
         "top": Math.floor(Math.random() * 71) + "%",
         "left": Math.floor(Math.random() * 81) + "%"
       }
+      // styles: {
+      //     "top": Math.floor(Math.random() * 71) + "%",
+      //     "left": Math.floor(left + "%"
+      // }
     })
   }
 
@@ -34,7 +40,7 @@ class Balloon extends Component {
   render() {
     if(this.state.show === true) {
       return(
-        <SvgLoader onClick={this.hide} className="balloon" style={this.state.styles} fill={"#" + this.state.color} path={ require('./balloon.svg') }>
+        <SvgLoader onClick={this.hide} className="balloon" style={this.state.styles} fill={"#" + this.state.color} path={ require('./ghost.svg') }>
           <SvgProxy selector="#balloon" />
         </SvgLoader>
       )

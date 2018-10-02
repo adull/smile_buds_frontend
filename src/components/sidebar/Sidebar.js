@@ -79,7 +79,7 @@ class Sidebar extends Component {
               <img src={ require('./halloween-umbrella.png') } alt="Umbrella" />
             </div>
             <div className="option-title">
-              Balloons
+              Ghosts
             </div>
           </div>
           <div onClick={this.toggleAboutModal} className="sidebar-option">
