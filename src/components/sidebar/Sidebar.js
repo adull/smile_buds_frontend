@@ -46,7 +46,7 @@ class Sidebar extends Component {
         <div className="sidebar-options-wrapper">
           <a href="/" className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./star.png') } alt="Star" />
+              <img src={ require('./halloween-star.png') } alt="Star" />
             </div>
             <div className="option-title">
               Smile Feed
@@ -54,7 +54,7 @@ class Sidebar extends Component {
           </a>
           <div onClick={this.toggleSearchModal} className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./paw.png') } alt="Paw" />
+              <img src={ require('./halloween-paw.png') } alt="Paw" />
             </div>
             <div className="option-title">
               Search Users
@@ -65,7 +65,7 @@ class Sidebar extends Component {
           </div>
           <div onClick={this.toggleMessengerModal} className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./chat.png') } alt="Chat" />
+              <img src={ require('./halloween-chat.png') } alt="Chat" />
             </div>
             <div className="option-title">
               Messages
@@ -76,7 +76,7 @@ class Sidebar extends Component {
           </div>
           <div onClick={this.props.addBalloon} className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./umbrella.png') } alt="Umbrella" />
+              <img src={ require('./halloween-umbrella.png') } alt="Umbrella" />
             </div>
             <div className="option-title">
               Balloons
@@ -84,7 +84,7 @@ class Sidebar extends Component {
           </div>
           <div onClick={this.toggleAboutModal} className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./diamong.png') } alt="Diamond" />
+              <img src={ require('./halloween-diamong.png') } alt="Diamond" />
             </div>
             <div className="option-title">
               About

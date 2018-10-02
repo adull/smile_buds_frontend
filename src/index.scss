@@ -22,12 +22,28 @@
 
 //colors
 $light-blue: #add8e6;
-$blue: #84a4cb;
-$off-white: #fcfbe3;
-$grey: #cdcdcd;
+// $blue: #84a4cb;
+// $off-white: #fcfbe3;
+// $grey: #cdcdcd;
 $grey-blue: #bfcfe3;
 $white: #ffffff;
 $red: #ff0000;
+$light-yellow: #fcfc77;
+$yellow: #fef214;
+
+// halloween colors
+//
+// blue is now orange
+$blue: #fe984e;
+// grey is now light black
+$grey: #444444;
+// off white is now light purple
+$off-white: #865C8B;
+// grey blue is now light black
+$grey-blue: #2a2a2a;
+// yellow is now orange
+$yellow: #fe984e;
+$light-yellow: #fe984e;
 
 //breakpoints
 $bp-xs: 375px;
@@ -789,12 +805,12 @@ html, body {
                     &:hover {
                       .face-color {
                         // fill: darken(#FCFC77, 30%);
-                        fill: #fef214;
+                        fill: $yellow;
                       }
                     }
                     .face-color {
                       transition: 1s all;
-                      fill: #FCFC77;
+                      fill: $light-yellow;
 
                     }
                   }
@@ -802,7 +818,7 @@ html, body {
                     cursor: pointer;
                     &:hover {
                       .face-color {
-                        fill: #fef214
+                        fill: $yellow;
                       }
                     }
                     .face-color {

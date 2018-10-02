@@ -112,7 +112,7 @@ class GrinButton extends Component {
     if(this.state.grinningAt) {
       return (
         <div className="grin-section">
-          <img onClick={this.ungrinAt} src={ require('./grin-icon.png') } alt="smile" />
+          <img onClick={this.ungrinAt} src={ require('./halloween-grin-icon.png') } alt="smile" />
           <button onClick={this.ungrinAt} className="grin-btn">Stop Grinning At This!</button>
           <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
             <LoginOrSignup />
@@ -123,7 +123,7 @@ class GrinButton extends Component {
     else {
       return(
         <div className="grin-section" >
-          <img onClick={this.grinAt} src={ require('./grin-icon.png') } alt="smile" />
+          <img onClick={this.grinAt} src={ require('./halloween-grin-icon.png') } alt="smile" />
           <button onClick={this.grinAt} className="grin-btn">Grin At!</button>
           <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
             <LoginOrSignup />
