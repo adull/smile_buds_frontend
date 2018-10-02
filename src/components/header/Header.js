@@ -25,7 +25,7 @@ class Header extends Component {
         <div className="header-text">
           <img className="lol" src={ require('./smile_buds.png') } alt="Smile buds" />
           <div className="header-text-title">
-            <i>Smilebuddies</i>
+            <i>Spookybuddies</i>
           </div>
           <div className="header-text-subtitle">
             <img className="subtitle-img" src={ require('./we_laugh.png') } alt="We Laugh So Much Here!" />
