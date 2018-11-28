@@ -3,6 +3,13 @@ import {Link} from 'react-router-dom';
 import DeleteComment from './DeleteComment.js';
 import CommentGrinSection from './CommentGrinSection.js';
 
+function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    })
+}
+
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +48,7 @@ class Comment extends Component {
                 </div>
               </div>
             </a>
-            <div className="comment-message">
-              {this.state.metadata.comment}
-            </div>
+            <div className="comment-message"dangerouslySetInnerHTML={{__html: urlify(this.state.metadata.comment)}} />
           </div>
           <CommentGrinSection id={this.state.metadata.id} grins={this.state.grins} refresh={this.props.refresh}/>
           {this.state.metadata.deletePermission ? <DeleteComment clicked={this.deleteComment} commentID={this.state.metadata.id} onClick={this.deleteComment}/> : null}

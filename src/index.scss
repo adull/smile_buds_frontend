@@ -22,9 +22,9 @@
 
 //colors
 $light-blue: #add8e6;
-// $blue: #84a4cb;
-// $off-white: #fcfbe3;
-// $grey: #cdcdcd;
+$blue: #84a4cb;
+$off-white: #fcfbe3;
+$grey: #cdcdcd;
 $grey-blue: #bfcfe3;
 $white: #ffffff;
 $red: #ff0000;
@@ -32,7 +32,9 @@ $light-yellow: #fcfc77;
 $yellow: #fef214;
 
 // halloween colors
-//
+
+// light blue is now orange
+$light-blue: #fe984e;
 // blue is now orange
 $blue: #fe984e;
 // grey is now light black
@@ -792,6 +794,9 @@ html, body {
                     margin: 10px 0px;
                     padding: 0 15px;
                     word-break: break-word;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                     @media(max-width: $bp-sm) {
                       font-size: 18px;
                       margin: 15px 0;
@@ -1096,6 +1101,22 @@ html, body {
   }
 }
 
+.create-new-feed {
+  display: flex;
+  align-items: center;
+  .image-options {
+    display: flex;
+    .image-option {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        margin: 0 15px;
+      }
+    }
+  }
+}
+
 .uploading {
   border: 16px solid #f3f3f3;
   border-top: 16px solid $blue;
@@ -1316,6 +1337,8 @@ html, body {
           margin: 20px 0px;
           &.from-them {
             background-color: $grey-blue;
+            // halloween
+            color: $blue;
           }
           &.from-me {
             background-color: $blue;

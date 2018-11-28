@@ -18,6 +18,7 @@ class TextPost extends Post {
       deleteContent: true
     })
   }
+
   render() {
     if(this.state.deleteContent === true) {
       return null;
@@ -50,15 +51,13 @@ class TextPost extends Post {
           </div>
         </div>
         <div className="post-bottom">
-          <div className="post-content text-blue-arial">
-            {this.state.message}
-          </div>
+          <div className="post-content text-blue-arial" dangerouslySetInnerHTML={{__html: this.state.message}} />
           <div className="post-interaction">
             <GrinButton onGrin={this.didGrin} hash={this.state.hash} />
           </div>
           <PostStats stats={this.state.post_stats} allGrins={this.state.allGrins}/>
         </div>
-        <CommentSection hash={this.state.hash} />
+        <CommentSection hash={this.state.hash} ref="fuck"/>
         <DeletePost clicked={this.deleteContent} show={this.state.delete} hash={this.state.hash}/>
       </div>
     );

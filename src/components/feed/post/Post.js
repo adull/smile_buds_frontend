@@ -6,6 +6,13 @@ function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
+function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    })
+}
+
 class Post extends Component {
   constructor() {
     super();
@@ -63,6 +70,15 @@ class Post extends Component {
   componentWillMount() {
     let thisObj = this;
     let posterId = this.props.metadata.poster_id;
+    // fetch('/api/test', {
+    //   credentials: 'include'
+    // })
+    // .then(function(response) {
+    //   return response.json();
+    // })
+    // .then(function(json) {
+    //   console.log(json);
+    // })
     fetch('/api/get-user/userid/' + posterId, {
       credentials: 'include'
     })
@@ -100,12 +116,11 @@ class Post extends Component {
 
   componentDidMount() {
     let metadata = this.props.metadata;
-    // console.log(metadata.hash);
     this.setState ({
       hash: metadata.hash,
       subject: metadata.subject,
       reason: metadata.reason,
-      message: metadata.message,
+      message: urlify(metadata.message).replace(/(?:\r\n|\r|\n)/g, '<br>'),
       delete: metadata.deletePermission
     });
   }

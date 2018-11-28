@@ -3,13 +3,14 @@ import TextPost from './post/TextPost.js';
 import ImagePost from './post/ImagePost.js';
 
 class Feed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       postsReceived: 0,
       postsArr: [],
       loading: false,
-      fakeFeed: false
+      fakeFeed: false,
+      feedName: props.feedName
     }
     this.isBottom = this.isBottom.bind(this);
     this.getPosts = this.getPosts.bind(this);

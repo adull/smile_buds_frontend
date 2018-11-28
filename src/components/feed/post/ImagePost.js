@@ -60,9 +60,7 @@ class ImagePost extends Post {
           <div className="post-image">
             <img src={ "/api/get-image-from-post/" + this.state.hash } alt={this.state.poster_name + "'s Image"}  />
           </div>
-          <div className="post-content text-blue-arial">
-            {this.state.message}
-          </div>
+          <div className="post-content text-blue-arial" dangerouslySetInnerHTML={{__html: this.state.message}} />
           <div className="post-interaction">
             <GrinButton onGrin={this.didGrin} hash={this.state.hash} />
           </div>

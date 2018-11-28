@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Search from '../search/Search.js';
 import Modal from '../modal/Modal.js';
 import Messaging from '../messaging/Messaging.js';
+import CreateNewFeed from '../create-new-feed/CreateNewFeed.js';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Sidebar extends Component {
       messengerIsOpen: false,
       aboutIsOpen: false,
       searchIsOpen: false,
+      createNewFeedIsOpen: false,
       loggedIn: props.loggedIn
     };
   }
@@ -31,6 +33,12 @@ class Sidebar extends Component {
   toggleSearchModal = () => {
     this.setState({
       searchIsOpen: !this.state.searchIsOpen
+    })
+  }
+
+  toggleCreateNewFeedModal = () => {
+    this.setState({
+      createNewFeedIsOpen: !this.state.createNewFeedIsOpen
     })
   }
 
@@ -97,6 +105,17 @@ class Sidebar extends Component {
                   Developed by <a href="http://abdelrazaq.com" target="_blank">Adlai Abdelrazaq</a>
                 </div>
               </div>
+            </Modal>
+          </div>
+          <div onClick={this.toggleCreateNewFeedModal} className="sidebar-option">
+            <div className="option-image">
+              <img src={ require('./halloween-star.png') } alt="Star" />
+            </div>
+            <div className="option-title">
+              New Feed
+            </div>
+            <Modal className="create-new-feed" show={this.state.createNewFeedIsOpen} onClose={this.toggleCreateNewFeedModal}>
+              <CreateNewFeed />
             </Modal>
           </div>
         </div>

@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import Header from '../../components/header/Header.js';
-import ForgotPasswordForm from '../../components/forgot-password/ForgotPasswordForm.js';
+import CoolLinksRoot from '../../components/cool-links/CoolLinksRoot.js';
+import Balloons from '../../components/balloons/Balloons.js';
 
-class ForgotPasswordPage extends Component {
+class CoolLinksPage extends Component {
   constructor() {
     super();
     this.state = {
+      balloonAmt: 0,
       loggedIn: false
     }
   }
+
+  addBalloon() {
+    this.setState({
+      balloonAmt: this.state.balloonAmt + 1
+    })
+  }
+
   componentWillMount() {
     let thisObj = this;
     fetch('/api/get-self', {
@@ -34,25 +43,14 @@ class ForgotPasswordPage extends Component {
   }
 
   render() {
-    if(this.state.loggedIn) {
-      return(
-        <a href="/" className="text-blue-arial">
-          You’re already signed in, silly!
-        </a>
-      );
-    }
-    else {
-      return (
-        <div>
-          <Header loggedIn={false}/>
-          <div className="forgot-password">
-            <ForgotPasswordForm />
-          </div>
-        </div>
-      );
-    }
-
+    return (
+      <div>
+        <Header loggedIn={this.state.loggedIn}/>
+        <CoolLinksRoot />
+        <Balloons balloonAmt={this.state.balloonAmt}/>
+      </div>
+    )
   }
 }
 
-export default ForgotPasswordPage;
+export default CoolLinksPage;

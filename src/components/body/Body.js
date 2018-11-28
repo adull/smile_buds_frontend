@@ -30,7 +30,7 @@ class Body extends Component {
           <div className="feed-section">
             <Sidebar addBalloon={this.props.addBalloon} loggedIn={this.props.loggedIn}/>
             <div className="feed-wrapper">
-              <Feed value="all" newPost={this.state.newPost}/>
+              <Feed value="all" feedName="smile-feed" newPost={this.state.newPost}/>
             </div>
           </div>
         </div>
