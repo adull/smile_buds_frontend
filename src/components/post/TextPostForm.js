@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 class TextPostForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       subject: '',
       message: '',
       reason: '',
+      feedName: props.feedName,
       uploading: false
     };
 
@@ -23,8 +24,7 @@ class TextPostForm extends Component {
       uploading: true
     })
     const {subject, message, reason} = this.state;
-    // console.log({first_name, last_name});
-    fetch('/api/text-post', {
+    fetch('/api/text-post/' + this.state.feedName, {
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify({subject, message, reason}),

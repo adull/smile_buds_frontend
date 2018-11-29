@@ -6,6 +6,7 @@ import UserPage from './user/UserPage';
 import PostPage from './post/PostPage';
 import ForgotPasswordPage from './forgot-password/ForgotPasswordPage';
 import CoolLinksPage from './cool-links/CoolLinksPage';
+import FeedPage from './feed/FeedPage';
 
 import Balloons from '../components/balloons/Balloons.js';
 
@@ -34,6 +35,7 @@ class AppController extends React.Component {
             <Route path="/post/:post" component={PostPage} />
             <Route exact path="/forgot-password" component={ForgotPasswordPage} />
             <Route exact path="/cool-links" component={CoolLinksPage} />
+            <Route exact path="/feed/:feedName" component={FeedPage} />
           </Switch>
         </BrowserRouter>
         <Balloons balloonAmt={this.state.balloonAmt}/>

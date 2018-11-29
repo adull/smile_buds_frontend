@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreateFeedFail from './CreateFeedFail.js';
 
 class CreateNewFeed extends Component {
   constructor() {
@@ -6,7 +7,9 @@ class CreateNewFeed extends Component {
     this.state = {
       image: 'star',
       feedName: '',
-      description: ''
+      description: '',
+      error: false,
+      error_type: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,7 +36,18 @@ class CreateNewFeed extends Component {
     .catch(error => console.error('Error:', error))
     .then(response => {
       if(response) {
-        console.log("response!")
+        // console.log("response!")
+        if(response.success) {
+          this.props.creationSuccess();
+        }
+        else {
+          if(response.reason === 'name-exists') {
+            this.setState({
+              error: true,
+              error_type: 'name-exists'
+            })
+          }
+        }
       }
       else {
         console.log("no response");
@@ -75,6 +89,7 @@ class CreateNewFeed extends Component {
             Description of your new Feed!
             <input name="description" id="description" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
           </label>
+          <CreateFeedFail show={this.state.error} errorType={this.state.error_type} />
           <div className="submit-options">
             <input className="round-btn" type="submit" value="Create New Feed!" />
             <div className="round-btn" onClick={this.props.close} >Do not create new feed</div>

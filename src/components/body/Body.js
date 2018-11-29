@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from '../sidebar/Sidebar.js';
 import Feed from '../feed/Feed.js';
-// import AccountLoggedIn from '../account/AccountLoggedIn.js'
 import Account from '../account/Account.js';
 import UserProfile from '../user/UserProfile.js';
 

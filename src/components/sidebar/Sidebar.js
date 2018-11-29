@@ -4,6 +4,7 @@ import Search from '../search/Search.js';
 import Modal from '../modal/Modal.js';
 import Messaging from '../messaging/Messaging.js';
 import CreateNewFeed from '../create-new-feed/CreateNewFeed.js';
+import UserFeeds from './UserFeeds.js';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -115,9 +116,10 @@ class Sidebar extends Component {
               New Feed
             </div>
             <Modal className="create-new-feed" show={this.state.createNewFeedIsOpen} onClose={this.toggleCreateNewFeedModal}>
-              <CreateNewFeed />
+              <CreateNewFeed creationSuccess={this.toggleCreateNewFeedModal}/>
             </Modal>
           </div>
+          <UserFeeds />
         </div>
       </div>
     );

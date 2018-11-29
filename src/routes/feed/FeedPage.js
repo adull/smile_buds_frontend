@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Header from '../../components/header/Header.js';
-import UserProfile from '../../components/user/UserProfile.js';
+import UserFeedBody from '../../components/user-feed/UserFeedBody.js';
 import Balloons from '../../components/balloons/Balloons.js';
 
-class UserPage extends Component {
+class FeedPage extends Component {
   constructor() {
     super();
     this.state = {
       balloonAmt: 0,
-      me: '',
-      loggedIn: false
+      loggedIn: false,
     }
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
     this.addBalloon = this.addBalloon.bind(this);
   }
 
@@ -31,7 +32,6 @@ class UserPage extends Component {
         }
         else {
           thisObj.setState({
-            isAdmin: (json.type === 'admin'),
             loggedIn: true
           })
         }
@@ -45,17 +45,35 @@ class UserPage extends Component {
     })
   }
 
+  login() {
+    this.setState({
+      loggedIn: true
+    })
+  }
+
+  logout() {
+    this.setState({
+      loggedIn: false
+    })
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      loggedIn: props.loggedIn
+    });
+  }
+
   render() {
     var pathName = this.props.location.pathname;
-    var userIdentifier = pathName.substr(pathName.lastIndexOf('/') + 1);
+    var feedName = pathName.substr(pathName.lastIndexOf('/') + 1);
     return (
       <div>
         <Header loggedIn={this.state.loggedIn}/>
-        <UserProfile addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} user={userIdentifier} isAdmin={this.state.isAdmin}/>
+        <UserFeedBody feedName={feedName} addBalloon={this.addBalloon} loggedIn={this.state.loggedIn} login={this.login} logout={this.logout}/>
         <Balloons balloonAmt={this.state.balloonAmt}/>
       </div>
     );
   }
 }
 
-export default UserPage;
+export default FeedPage;

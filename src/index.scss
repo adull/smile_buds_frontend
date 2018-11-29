@@ -1115,6 +1115,13 @@ html, body {
       }
     }
   }
+  .create-feed-fail {
+    font-family: 'Arial Rounded';
+    color: $red;
+    font-size: 18px;
+    margin: 15px 0px 30px;
+    text-align: center;
+  }
 }
 
 .uploading {

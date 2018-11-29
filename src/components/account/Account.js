@@ -3,13 +3,14 @@ import AccountNotLoggedIn from './AccountNotLoggedIn.js';
 import AccountLoggedIn from './AccountLoggedIn.js';
 
 class Account extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isLoggedIn: false,
       user: '',
       userid: -1,
-      useridentifier: ''
+      useridentifier: '',
+      feedName: props.feedName
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -103,7 +104,7 @@ class Account extends Component {
     }
     else {
       return(
-        <AccountLoggedIn name={this.state.user} identifier={this.state.useridentifier} logout={this.logout} newPost={this.props.newPost}/>
+        <AccountLoggedIn name={this.state.user} identifier={this.state.useridentifier} logout={this.logout} newPost={this.props.newPost} feedName={this.props.feedName}/>
       );
     }
   }

@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import PostFail from './PostFail.js'
 
 class ImagePostForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       subject: '',
       message: '',
       reason: '',
+      feedName: props.feedName,
       error: false,
       error_type: '',
       uploading: false
@@ -33,7 +34,7 @@ class ImagePostForm extends Component {
     data.append("reason", this.state.reason);
     data.append("image", this.fileInput.current.files[0]);
 
-    fetch('/api/image-post', {
+    fetch('/api/image-post/' + this.state.feedName, {
       credentials: 'include',
       method: 'POST',
       body: data,

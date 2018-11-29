@@ -7,6 +7,12 @@ import PostBar from './PostBar.js';
 import {Link} from 'react-router-dom';
 
 class AccountLoggedIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      feedName: props.feedName
+    }
+  }
   render() {
     return(
       <div className="account">
@@ -21,7 +27,7 @@ class AccountLoggedIn extends Component {
             <Logout logout={this.props.logout}/>
           </div>
           <div className="account-right-bottom">
-            <PostBar newPost={this.props.newPost}/>
+            <PostBar newPost={this.props.newPost} feedName={this.state.feedName}/>
           </div>
         </div>
       </div>

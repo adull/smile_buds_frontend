@@ -6,7 +6,10 @@ import ImagePostForm from '../post/ImagePostForm.js';
 class PostButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false };
+    this.state = {
+      isOpen: false,
+      feedName: props.feedName
+    };
     this.postSuccess = this.postSuccess.bind(this);
   }
 
@@ -31,7 +34,7 @@ class PostButton extends Component {
           <Modal show={this.state.isOpen}
                  onClose={this.toggleModal}
                  >
-              <TextPostForm postSuccess={this.postSuccess} />
+              <TextPostForm feedName={this.state.feedName} postSuccess={this.postSuccess} />
           </Modal>
         </div>
       );
@@ -44,7 +47,7 @@ class PostButton extends Component {
           <Modal show={this.state.isOpen}
                  onClose={this.toggleModal}
                  >
-              <ImagePostForm postSuccess={this.postSuccess} />
+              <ImagePostForm feedName={this.state.feedName} postSuccess={this.postSuccess} />
           </Modal>
         </div>
       );

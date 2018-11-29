@@ -5,6 +5,7 @@ import ImagePost from './post/ImagePost.js';
 class Feed extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       postsReceived: 0,
       postsArr: [],
@@ -44,7 +45,17 @@ class Feed extends Component {
       loading: true
     })
     let thisObj = this;
-    fetch('/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived, {
+    var fetchURL;
+    if(this.state.feedName) {
+      console.log("do this one")
+      // fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
+      fetchURL ='/api/get-user-feed-posts/' + this.state.feedName + '/' + this.state.postsReceived;
+    }
+    else {
+      console.log("nope do this one")
+      fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
+    }
+    fetch(fetchURL, {
       credentials: 'include',
     })
     .then(function(response) {
