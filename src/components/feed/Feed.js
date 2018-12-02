@@ -47,12 +47,11 @@ class Feed extends Component {
     let thisObj = this;
     var fetchURL;
     if(this.state.feedName) {
-      console.log("do this one")
-      // fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
-      fetchURL ='/api/get-user-feed-posts/' + this.state.feedName + '/' + this.state.postsReceived;
+      // console.log("do this one")
+      var fetchURL ='/api/get-user-feed-posts/' + this.state.feedName + '/' + this.state.postsReceived;
     }
     else {
-      console.log("nope do this one")
+      // console.log("nope do this one")
       fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
     }
     fetch(fetchURL, {

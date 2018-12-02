@@ -24,6 +24,7 @@ class TextPostForm extends Component {
       uploading: true
     })
     const {subject, message, reason} = this.state;
+    console.log(this.state.feedName);
     fetch('/api/text-post/' + this.state.feedName, {
       credentials: 'include',
       method: 'POST',

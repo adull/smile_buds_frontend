@@ -21,6 +21,8 @@ class UserFeedBody extends Component {
   }
 
   render() {
+    console.log("inside userfeedbody")
+    console.log(this.props.feedName)
     return(
       <div className="body user-feed-body">
         <div className="account-section">
