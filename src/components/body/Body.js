@@ -24,7 +24,7 @@ class Body extends Component {
       return(
         <div className="body">
           <div className="account-section">
-            <Account login={this.props.login} logout={this.props.logout} value="no-user" newPost={this.newPost}/>
+            <Account login={this.props.login} logout={this.props.logout} value="no-user" newPost={this.newPost} feedName="smile-feed"/>
           </div>
           <div className="feed-section">
             <Sidebar addBalloon={this.props.addBalloon} loggedIn={this.props.loggedIn}/>

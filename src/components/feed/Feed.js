@@ -54,6 +54,7 @@ class Feed extends Component {
       // console.log("nope do this one")
       fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
     }
+    console.log(fetchURL);
     fetch(fetchURL, {
       credentials: 'include',
     })

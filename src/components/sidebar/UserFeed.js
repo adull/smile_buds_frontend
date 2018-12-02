@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 
 class UserFeed extends Component {
   constructor(props) {
-    super();
+    super(props);
+    console.log(props)
     this.state = {
       image: props.metadata.image,
-      name: props.metadata.feedName,
+      name: props.metadata.feed_name,
       description: props.metadata.description
     }
   }

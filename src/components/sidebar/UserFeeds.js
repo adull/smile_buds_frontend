@@ -28,7 +28,7 @@ class UserFeeds extends Component {
     console.log(feeds)
     let feedsArr = [];
 
-    for(var i = 0; i < this.state.feeds.length; i ++) {
+    for(var i = 1; i < feeds.length; i ++) {
       feedsArr.push(
         <UserFeed key={i} metadata={feeds[i]} />
       )

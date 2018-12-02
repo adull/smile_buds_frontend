@@ -6,7 +6,7 @@ class CreateNewFeed extends Component {
     super();
     this.state = {
       image: 'star',
-      feedName: '',
+      feed_name: '',
       description: '',
       error: false,
       error_type: ''
@@ -25,11 +25,11 @@ class CreateNewFeed extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let data = new FormData();
-    const {image, feedName, description} = this.state;
+    const {image, feed_name, description} = this.state;
     fetch('/api/new-feed', {
       credentials: 'include',
       method: 'POST',
-      body: JSON.stringify({image, feedName, description}),
+      body: JSON.stringify({image, feed_name, description}),
       headers: {'Content-Type':'application/json'}
     })
     .then(res => res.json())
@@ -81,9 +81,9 @@ class CreateNewFeed extends Component {
               </span>
             </div>
           </label>
-          <label htmlFor="feedName">
+          <label htmlFor="feed_name">
             Name of your new Feed!
-            <input name="feedName" id="feedName" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
+            <input name="feed_name" id="feed_name" type="text" value={this.state.value} onChange={this.handleInputChange} required/>
           </label>
           <label htmlFor="description">
             Description of your new Feed!
