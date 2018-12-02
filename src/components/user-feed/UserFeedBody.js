@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from '../sidebar/Sidebar.js';
 import Feed from '../feed/Feed.js';
 import Account from '../account/Account.js';
-import UserProfile from '../user/UserProfile.js';
+import UserFeedHeader from './UserFeedHeader.js'
 
 class UserFeedBody extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class UserFeedBody extends Component {
     this.state = {
       newPost: '',
       feedName: props.feedName,
+      description: ''
     }
     this.newPost = this.newPost.bind(this);
   }
@@ -20,9 +21,24 @@ class UserFeedBody extends Component {
     })
   }
 
+  componentWillMount() {
+    fetch('/api/get-user-feed/' + this.state.feedName, {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => {
+      console.log(response);
+      this.setState({
+        description: response[0].description,
+        adminURL: response[0].admin,
+        adminName: response[0].admin_name,
+        adminPrivilege: response[0].admin_privilege
+      })
+    })
+  }
+
   render() {
-    console.log("inside userfeedbody")
-    console.log(this.props.feedName)
     return(
       <div className="body user-feed-body">
         <div className="account-section">
@@ -31,7 +47,8 @@ class UserFeedBody extends Component {
         <div className="feed-section">
           <Sidebar addBalloon={this.props.addBalloon} loggedIn={this.props.loggedIn}/>
           <div className="feed-wrapper">
-            <Feed value="all" feedName={this.props.feedName} newPost={this.state.newPost}/>
+            <UserFeedHeader feedName={this.state.feedName} description={this.state.description} adminURL={this.state.adminURL} adminName={this.state.adminName} adminPrivilege={this.state.adminPrivilege}/>
+            <Feed value="all" feedName={this.state.feedName} newPost={this.state.newPost}/>
           </div>
         </div>
       </div>
