@@ -28,7 +28,6 @@ class UserFeedBody extends Component {
     .then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(response => {
-      console.log(response);
       this.setState({
         description: response[0].description,
         adminURL: response[0].admin,

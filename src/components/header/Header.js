@@ -20,12 +20,12 @@ class Header extends Component {
     return(
       <header>
         <a href="/" className="smile-buddies">
-          <img src={ require('./spooky_buds.png') } alt="Smile buds" />
+          <img src={ require('./smile_buds.png') } alt="Smile buds" />
         </a>
         <div className="header-text">
           <img className="lol" src={ require('./smile_buds.png') } alt="Smile buds" />
           <div className="header-text-title">
-            <i>Spookybuddies</i>
+            <i>Smilebuddies</i>
           </div>
           <div className="header-text-subtitle">
             <img className="subtitle-img" src={ require('./we_laugh.png') } alt="We Laugh So Much Here!" />

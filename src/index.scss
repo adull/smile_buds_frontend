@@ -31,21 +31,21 @@ $red: #ff0000;
 $light-yellow: #fcfc77;
 $yellow: #fef214;
 
-// halloween colors
-
-// light blue is now orange
-$light-blue: #fe984e;
-// blue is now orange
-$blue: #fe984e;
-// grey is now light black
-$grey: #444444;
-// off white is now light purple
-$off-white: #865C8B;
-// grey blue is now light black
-$grey-blue: #2a2a2a;
-// yellow is now orange
-$yellow: #fe984e;
-$light-yellow: #fe984e;
+// // halloween colors
+//
+// // light blue is now orange
+// $light-blue: #fe984e;
+// // blue is now orange
+// $blue: #fe984e;
+// // grey is now light black
+// $grey: #444444;
+// // off white is now light purple
+// $off-white: #865C8B;
+// // grey blue is now light black
+// $grey-blue: #2a2a2a;
+// // yellow is now orange
+// $yellow: #fe984e;
+// $light-yellow: #fe984e;
 
 //breakpoints
 $bp-xs: 375px;
@@ -918,6 +918,9 @@ html, body {
             font-family: 'Arial Rounded';
             font-size: 24px;
             cursor:  pointer;
+            &:focus {
+              outline: none;
+            }
           }
         }
       }
@@ -1154,6 +1157,16 @@ html, body {
     font-size: 18px;
     margin: 15px 0px 30px;
     text-align: center;
+  }
+}
+
+.edit-controller {
+  .edit-controller-options {
+    display: flex;
+    .edit-controller-option {
+      margin: 5px 15px;
+      cursor: pointer;
+    }
   }
 }
 

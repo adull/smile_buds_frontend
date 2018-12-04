@@ -9,13 +9,11 @@ import {Link} from 'react-router-dom';
 class AccountLoggedIn extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       feedName: props.feedName
     }
   }
   render() {
-    console.log(this.state.feedName);
     return(
       <div className="account">
         <div className="account-picture">

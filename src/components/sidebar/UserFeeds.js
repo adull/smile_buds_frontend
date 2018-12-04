@@ -25,7 +25,6 @@ class UserFeeds extends Component {
 
   render() {
     let feeds = this.state.feeds;
-    console.log(feeds)
     let feedsArr = [];
 
     for(var i = 1; i < feeds.length; i ++) {

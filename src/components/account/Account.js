@@ -5,7 +5,6 @@ import AccountLoggedIn from './AccountLoggedIn.js';
 class Account extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       isLoggedIn: false,
       user: '',
@@ -97,7 +96,6 @@ class Account extends Component {
   }
 
   render() {
-    // console.log(this.state);
     if(this.state.isLoggedIn === false) {
       return(
         <AccountNotLoggedIn value="no-user" login={this.login} />

@@ -65,19 +65,19 @@ class CreateNewFeed extends Component {
             <div className="image-options">
               <span className="image-option">
                 <input type="radio" name="image" id="star" value={"star"} checked={this.state.image === "star"} onChange={this.handleInputChange}/>
-                <img src={ require('./halloween-star.png') } alt="Star" />
+                <img src={ require('../sidebar/star.png') } alt="Star" />
               </span>
               <span className="image-option">
                 <input type="radio" name="image" value={"paw"} checked={this.state.image === "paw"} onChange={this.handleInputChange}/>
-                <img src={ require('./halloween-paw.png') } alt="Paw" />
+                <img src={ require('../sidebar/paw.png') } alt="Paw" />
               </span>
               <span className="image-option">
                 <input type="radio" name="image" value={"umbrella"} checked={this.state.image === "umbrella"} onChange={this.handleInputChange}/>
-                <img src={ require('./halloween-umbrella.png') } alt="Umbrella" />
+                <img src={ require('../sidebar/umbrella.png') } alt="Umbrella" />
               </span>
               <span className="image-option">
                 <input type="radio" name="image" value={"diamond"} checked={this.state.image === "diamond"} onChange={this.handleInputChange}/>
-                <img src={ require('./halloween-diamong.png') } alt="Diamond" />
+                <img src={ require('../sidebar/diamong.png') } alt="Diamond" />
               </span>
             </div>
           </label>

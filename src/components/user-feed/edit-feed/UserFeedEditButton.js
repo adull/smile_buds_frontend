@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import UserFeedEditForm from './UserFeedEditForm.js';
-import Modal from '../modal/Modal.js'
+import UserFeedEdit from './UserFeedEdit.js';
+import Modal from '../../modal/Modal.js'
 
-class UserFeedEdit extends Component {
+class UserFeedEditButton extends Component {
   constructor(props) {
-    console.log(props)
     super(props);
     this.state = {
       feedName: props.feedName,
+      editingName: true,
+      editingDescription: false,
+      editingImage: false,
       editPrivilege: props.adminPrivilege,
       editModalIsOpen: false
     }
@@ -21,22 +23,20 @@ class UserFeedEdit extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props);
     this.setState({
       editPrivilege: props.adminPrivilege
     })
   }
 
   render() {
-    console.log(this.state.editPrivilege);
     if(this.state.editPrivilege === true) {
       return (
         <div className="user-feed-edit">
           <button className="edit-btn" onClick={this.toggleEditModal}>
             Edit feed
           </button>
-          <Modal className="user-feed-edit-modal" show={this.state.editModalIsOpen}>
-            <UserFeedEditForm feedName={this.state.feedName} close={this.toggleEditModal} />
+          <Modal className="user-feed-edit-modal" show={this.state.editModalIsOpen} onClose={this.toggleEditModal}>
+            <UserFeedEdit feedName={this.state.feedName} close={this.toggleEditModal} />
           </Modal>
         </div>
       )
@@ -47,4 +47,4 @@ class UserFeedEdit extends Component {
   }
 }
 
-export default UserFeedEdit;
+export default UserFeedEditButton;

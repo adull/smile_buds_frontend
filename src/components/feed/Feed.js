@@ -5,7 +5,6 @@ import ImagePost from './post/ImagePost.js';
 class Feed extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       postsReceived: 0,
       postsArr: [],
@@ -40,21 +39,17 @@ class Feed extends Component {
 
 
   getPosts() {
-    // console.log(this.state.getPostsArr);
     this.setState({
       loading: true
     })
     let thisObj = this;
     var fetchURL;
     if(this.state.feedName) {
-      // console.log("do this one")
       var fetchURL ='/api/get-user-feed-posts/' + this.state.feedName + '/' + this.state.postsReceived;
     }
     else {
-      // console.log("nope do this one")
       fetchURL = '/api/get-feed-posts/' + this.props.value  + '/' + this.state.postsReceived;
     }
-    console.log(fetchURL);
     fetch(fetchURL, {
       credentials: 'include',
     })
@@ -65,7 +60,6 @@ class Feed extends Component {
     })
     .then(function(json) {
       if(json) {
-        // console.log(json);
         if(json.fake_feed === true) {
           thisObj.setState({
             fakeFeed: true
@@ -101,27 +95,22 @@ class Feed extends Component {
   componentWillReceiveProps(props) {
     let thisObj = this;
     if(props.newPost !== '' && props.newPost !== undefined) {
-      // console.log(props.newPost);
       fetch('/api/get-feed-post/' + props.newPost, {
         credentials: 'include'
       })
       .then(function(response) {
-        // console.log(response)
         return response.json();
       })
       .then(function(json) {
-        // console.log(json)
         if(json.error_reason) {
         }
         else {
-          // console.log(thisObj.state.postsArr)
           let jsonArr = []
           jsonArr.push(json)
           thisObj.setState({
             postsReceived: thisObj.state.postsReceived + json.length,
             postsArr: jsonArr.concat(thisObj.state.postsArr)
           })
-          // console.log(thisObj.state.postsArr)
         }
       })
     }

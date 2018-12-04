@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserFeedEdit from './UserFeedEdit.js'
+import UserFeedEditButton from './edit-feed/UserFeedEditButton.js'
 
 class UserFeedHeader extends Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class UserFeedHeader extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props)
     this.setState({
       feedName: props.feedName,
       description: props.description,
@@ -40,7 +39,7 @@ class UserFeedHeader extends Component {
         <div className="user-feed-header-admin user-feed-header-child">
           Created by <a href={"/user/" + this.state.adminURL}>{this.state.adminName}</a>
         </div>
-        <UserFeedEdit feedName={this.state.feedName} adminPrivilege={this.state.adminPrivilege} />
+        <UserFeedEditButton feedName={this.state.feedName} adminPrivilege={this.state.adminPrivilege} />
       </div>
     );
   }
