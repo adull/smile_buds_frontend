@@ -40,7 +40,7 @@ class Balloon extends Component {
   render() {
     if(this.state.show === true) {
       return(
-        <SvgLoader onClick={this.hide} className="balloon" style={this.state.styles} fill={"#" + this.state.color} path={ require('./ghost.svg') }>
+        <SvgLoader onClick={this.hide} className="balloon" style={this.state.styles} fill={"#" + this.state.color} path={ require('./balloon.svg') }>
           <SvgProxy selector="#balloon" />
         </SvgLoader>
       )

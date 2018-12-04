@@ -88,7 +88,7 @@ class Sidebar extends Component {
               <img src={ require('./umbrella.png') } alt="Umbrella" />
             </div>
             <div className="option-title">
-              Ghosts
+              Balloons
             </div>
           </div>
           <div onClick={this.toggleAboutModal} className="sidebar-option">
@@ -110,7 +110,7 @@ class Sidebar extends Component {
           </div>
           <div onClick={this.toggleCreateNewFeedModal} className="sidebar-option">
             <div className="option-image">
-              <img src={ require('./star.png') } alt="Star" />
+              <img src={ require('./plus.png') } alt="Star" />
             </div>
             <div className="option-title">
               New Feed
