@@ -57,7 +57,6 @@ class EditProfile extends Component {
         data.append("password", this.state.password);
       }
       data.append("email_notifications", this.state.email_notifications);
-      data.append("image", this.fileInput.current.files[0]);
       fetch('/api/edit-profile', {
         credentials: 'include',
         method: 'POST',
@@ -103,10 +102,6 @@ class EditProfile extends Component {
           <div className="text-blue-arial">Only the fields you edit will be updated.</div>
         </div>
         <form className="smile-buds-form" onSubmit={this.handleSubmit}>
-          <label className="file-label" htmlFor="image">
-            Upload a new pic of your face! (Hey, no files bigger than 1 MB now!)
-            <input name="image" id="image" type ="file" accept="image/png, image/jpg, image/jpeg" ref={this.fileInput} />
-          </label>
           <label htmlFor="hobby">
             Update Your Favorite Hobby:
             <select name="hobby" id="hobby" value={this.state.value} onChange={this.handleInputChange} >
